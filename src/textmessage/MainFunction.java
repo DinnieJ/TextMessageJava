@@ -7,7 +7,6 @@ package textmessage;
 
 import java.io.BufferedReader;
 import java.io.File;
-import java.io.FileNotFoundException;
 import java.io.FileReader;
 import java.io.IOException;
 import java.text.DateFormat;
@@ -20,6 +19,9 @@ import java.util.List;
 import java.util.Set;
 import java.util.logging.Level;
 import java.util.logging.Logger;
+import java.util.regex.Matcher;
+import java.util.regex.Pattern;
+
 
 /**
  *
@@ -32,7 +34,8 @@ public class MainFunction {
     private List<Message> messages;
     private List<String> content;
     private int currentPos;
-    private DateFormat format = new SimpleDateFormat("hh:mm a");;
+    private DateFormat format = new SimpleDateFormat("hh:mm a");
+    private Pattern p;
     
     public MainFunction() {
         allowedWords = new HashSet<>();
@@ -40,6 +43,7 @@ public class MainFunction {
         content = new ArrayList<>();
         currentPos = 0;
         messages = new ArrayList<>();
+        p = Pattern.compile("(1[012]|[1-9]):[0-5][0-9](\\s)?(?i)(am|pm)");
     }
     
     public void readFile(String src){
@@ -65,7 +69,11 @@ public class MainFunction {
          * Get all the word allowed
          */
         for(int i = currentPos+1; i<currentPos + allowedWordSize + 1 ; i++){
-            allowedWords.add(content.get(i));
+            if( checkWordSize(content.get(i)) ){
+                allowedWords.add(content.get(i));
+            } else {
+                System.out.println("Word "+content.get(i)+" is invalid (Reason: Too long)");
+            }
             //System.out.println(content.get(i));
         }
         currentPos += (allowedWordSize+1);
@@ -81,11 +89,28 @@ public class MainFunction {
         currentPos += (bannedWordSize+1);
     }
     
-    public void getAllMessage() throws ParseException{
+    /**
+     * Split and analyze all the message in a pair of line
+     * skip the message if the format of the date is wrong;
+     */
+    public void getAllMessage(){
         int numofMessage = Integer.parseInt(content.get(currentPos));
         for(int i = currentPos+1; i<currentPos + (numofMessage*2) +1; i+=2){
-            Date sendTime = format.parse(content.get(i));
             String message = content.get(i+1);
+            Date sendTime = null;
+            
+            try {
+                if(validTimeFormat(content.get(i))){
+                    sendTime = format.parse(content.get(i));
+                }
+                else{
+                    System.out.println("Invalid time for message \""+message+"\"");
+                    continue;
+                }
+            } catch (ParseException ex) {
+                System.out.println("The time format of the message \""+message+" \" is unreadable");
+                continue;
+            }
             Message m = new Message(sendTime, message);
             messages.add(m);
             //System.out.println(m.toString());
@@ -183,6 +208,23 @@ public class MainFunction {
         return exist;
     }
     
+    /**
+     * Valid the format of the time imput
+     * @param timeString
+     * @return 
+     */
+    public boolean validTimeFormat(String timeString){
+        Matcher m = p.matcher(timeString);
+        return m.matches();
+    }
     
-    
+    /**
+     * Check if the word is longer than 29 letters
+     * @param word
+     * @return 
+     */
+    public boolean checkWordSize(String word){
+        return word.length() <= 29;
+    }
+
 }

@@ -7,6 +7,9 @@ package textmessage;
 
 import java.io.IOException;
 import java.text.ParseException;
+import java.time.LocalTime;
+import java.time.format.DateTimeFormatter;
+import java.time.format.DateTimeFormatterBuilder;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.logging.Level;
@@ -21,14 +24,12 @@ public class TextMessage {
     /**
      * @param args the command line arguments
      */
-    public static void main(String[] args) throws ParseException {
+    public static void main(String[] args){
         MainFunction m = new MainFunction();
         m.readFile("src/textmsg.txt");
         m.analyzeFile();
         m.getAllMessage();
         m.confirmMessage();
-        
-
     }
     
 }
