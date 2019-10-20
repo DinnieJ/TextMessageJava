@@ -42,13 +42,19 @@ public class MainFunction {
         messages = new ArrayList<>();
     }
     
-    public void readFile(String src) throws FileNotFoundException, IOException{
-        File f = new File(src);
-        BufferedReader br = new BufferedReader(new FileReader(f));
-        String st="";
-        while((st = br.readLine()) != null){
-            content.add(st);
-            //System.out.println(st);
+    public void readFile(String src){
+        BufferedReader br = null;
+        try {
+            File f = new File(src);
+            br = new BufferedReader(new FileReader(f));
+            String st="";
+            while((st = br.readLine()) != null){
+                content.add(st);
+                //System.out.println(st);
+            }
+        } catch (IOException ex) {
+            System.out.println("FILE NOT FOUND");
+            System.exit(0);
         }
     }
     

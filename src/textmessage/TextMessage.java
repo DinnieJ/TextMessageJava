@@ -23,11 +23,7 @@ public class TextMessage {
      */
     public static void main(String[] args) throws ParseException {
         MainFunction m = new MainFunction();
-        try {
-            m.readFile("src/textmsg.txt");
-        } catch (IOException ex) {
-            Logger.getLogger(TextMessage.class.getName()).log(Level.SEVERE, null, ex);
-        }
+        m.readFile("src/textmsg.txt");
         m.analyzeFile();
         m.getAllMessage();
         m.confirmMessage();
