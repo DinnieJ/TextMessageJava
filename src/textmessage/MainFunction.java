@@ -34,7 +34,7 @@ public class MainFunction {
     private List<Message> messages;
     private List<String> content;
     private int currentPos;
-    private DateFormat format = new SimpleDateFormat("hh:mm a");
+    private DateFormat format;
     private Pattern p;
     
     public MainFunction() {
@@ -44,6 +44,7 @@ public class MainFunction {
         currentPos = 0;
         messages = new ArrayList<>();
         p = Pattern.compile("(1[012]|[1-9]):[0-5][0-9](\\s)?(?i)(am|pm)");
+        format = new SimpleDateFormat("hh:mm a");
     }
     
     public void readFile(String src){
@@ -74,17 +75,15 @@ public class MainFunction {
             } else {
                 System.out.println("Word "+content.get(i)+" is invalid (Reason: Too long)");
             }
-            //System.out.println(content.get(i));
+            
         }
         currentPos += (allowedWordSize+1);
         int bannedWordSize = Integer.parseInt(content.get(currentPos)); //get the number of banned words
-        //System.out.println("Banned Words:" + bannedWordSize);
         /**
          * Get all the banned words
          */
         for(int i = currentPos+1; i < currentPos+ bannedWordSize+1 ;i++){
             bannedWords.add(content.get(i));
-            //System.out.println(content.get(i));
         }
         currentPos += (bannedWordSize+1);
     }
@@ -140,20 +139,20 @@ public class MainFunction {
             check = false;
         }
         String[] messArr = m.getMessage().split(" ");
-        int countMisspelled = 0;
+        int misspellWordCount = 0;
         for(String s: messArr){
             if(isForbiddenWord(s)){
                 check = false;
                 break;
             }
-            if(isMisspelledWord(s)){
-                countMisspelled++;
-                continue;
+            if(!isCorrectWord(s)){
+                misspellWordCount++;
             }
         }
-        if(countMisspelled>=3){
+        if(misspellWordCount >=3){
             check = false;
         }
+        //System.out.println("Message:"+m.getMessage()+"/"+countMisspelled);
         return check;
     }
     
@@ -181,10 +180,11 @@ public class MainFunction {
      * @param word
      * @return 
      */
-    public boolean isMisspelledWord(String word){
+    public boolean isCorrectWord(String word){
         boolean exist = false;
         for(String s:allowedWords){
-            if(!s.equalsIgnoreCase(word)){
+            if(s.equalsIgnoreCase(word)){
+                //System.out.println(word);
                 exist = true;
                 break;
             }
