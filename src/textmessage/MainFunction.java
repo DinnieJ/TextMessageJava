@@ -64,7 +64,13 @@ public class MainFunction {
     }
     
     public void analyzeFile(){
-        int allowedWordSize = Integer.parseInt(content.get(currentPos));
+        int allowedWordSize = 0;
+        try{
+            allowedWordSize = Integer.parseInt(content.get(currentPos));
+        }catch(NumberFormatException ex){
+            System.err.println("YOUR FILE HAS INCORRECT FORMAT,PLEASE CHECK THE FILE AND TRY AGAIN");
+            System.exit(-1);
+        }
         //System.out.println("Allowed Words:"+allowedWordSize);
         /**
          * Get all the word allowed
@@ -73,17 +79,24 @@ public class MainFunction {
             if( checkWordSize(content.get(i)) ){
                 allowedWords.add(content.get(i));
             } else {
-                System.out.println("Word "+content.get(i)+" is invalid (Reason: Too long)");
+                System.err.println("Word "+content.get(i).toLowerCase()+" is invalid (Reason: Too long)");
             }
             
         }
         currentPos += (allowedWordSize+1);
-        int bannedWordSize = Integer.parseInt(content.get(currentPos)); //get the number of banned words
+        int bannedWordSize = 0;
+        try{
+            bannedWordSize = Integer.parseInt(content.get(currentPos)); //get the number of banned words
+        }catch(NumberFormatException ex){
+            System.err.println("YOUR FILE HAS INCORRECT FORMAT,PLEASE CHECK THE FILE AND TRY AGAIN");
+            System.exit(-1);
+        }
+        
         /**
          * Get all the banned words
          */
         for(int i = currentPos+1; i < currentPos+ bannedWordSize+1 ;i++){
-            bannedWords.add(content.get(i));
+            bannedWords.add(content.get(i).toLowerCase());
         }
         currentPos += (bannedWordSize+1);
     }
@@ -93,7 +106,13 @@ public class MainFunction {
      * skip the message if the format of the date is wrong;
      */
     public void getAllMessage(){
-        int numofMessage = Integer.parseInt(content.get(currentPos));
+        int numofMessage = 0;
+        try{
+            numofMessage = Integer.parseInt(content.get(currentPos));
+        }catch(NumberFormatException ex){
+            System.err.println("YOUR FILE HAS INCORRECT FORMAT,PLEASE CHECK THE FILE AND TRY AGAIN");
+            System.exit(-1);
+        }
         for(int i = currentPos+1; i<currentPos + (numofMessage*2) +1; i+=2){
             String message = content.get(i+1);
             Date sendTime = null;
@@ -103,11 +122,11 @@ public class MainFunction {
                     sendTime = format.parse(content.get(i));
                 }
                 else{
-                    System.out.println("Invalid time for message \""+message+"\"");
+                    System.err.println("Invalid time for message \""+message+"\"");
                     continue;
                 }
             } catch (ParseException ex) {
-                System.out.println("The time format of the message \""+message+" \" is unreadable");
+                System.err.println("The time format of the message \""+message+" \" is unreadable");
                 continue;
             }
             Message m = new Message(sendTime, message);
@@ -116,6 +135,11 @@ public class MainFunction {
         }
     }
     
+    /**
+     * Checking the time allowed to test
+     * @param m
+     * @return 
+     */
     public boolean checkValidTime(Message m){
         boolean check = true;
         Date FROM_TIME = null;
@@ -152,7 +176,7 @@ public class MainFunction {
         if(misspellWordCount >=3){
             check = false;
         }
-        //System.out.println("Message:"+m.getMessage()+"/"+countMisspelled);
+        System.out.println("Message:"+m.getMessage()+"/"+misspellWordCount);
         return check;
     }
     
