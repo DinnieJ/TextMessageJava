@@ -5,15 +5,6 @@
  */
 package textmessage;
 
-import java.io.IOException;
-import java.text.ParseException;
-import java.time.LocalTime;
-import java.time.format.DateTimeFormatter;
-import java.time.format.DateTimeFormatterBuilder;
-import java.util.ArrayList;
-import java.util.List;
-import java.util.logging.Level;
-import java.util.logging.Logger;
 
 /**
  *
@@ -27,9 +18,17 @@ public class TextMessage {
     public static void main(String[] args){
         MainFunction m = new MainFunction();
         m.readFile("src/textmsg.txt");
-        m.analyzeFile();
-        m.getAllMessage();
-        m.confirmMessage();
+        if(m.analyzeFile()){
+            if(m.getAllMessage()){
+                m.confirmMessage();
+            }else{
+                System.exit(-1);
+            }
+        }else{
+            System.exit(-1);
+        }
+        
+
     }
     
 }

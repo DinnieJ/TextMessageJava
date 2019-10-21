@@ -19,8 +19,6 @@ import java.util.List;
 import java.util.Set;
 import java.util.logging.Level;
 import java.util.logging.Logger;
-import java.util.regex.Matcher;
-import java.util.regex.Pattern;
 
 
 /**
@@ -35,7 +33,6 @@ public class MainFunction {
     private List<String> content;
     private int currentPos;
     private DateFormat format;
-    private Pattern p;
     
     public MainFunction() {
         allowedWords = new HashSet<>();
@@ -43,7 +40,6 @@ public class MainFunction {
         content = new ArrayList<>();
         currentPos = 0;
         messages = new ArrayList<>();
-        p = Pattern.compile("(1[012]|[1-9]):[0-5][0-9](\\s)?(?i)(am|pm)");
         format = new SimpleDateFormat("hh:mm a");
     }
     
@@ -63,13 +59,13 @@ public class MainFunction {
         }
     }
     
-    public void analyzeFile(){
+    public boolean analyzeFile(){
         int allowedWordSize = 0;
         try{
             allowedWordSize = Integer.parseInt(content.get(currentPos));
         }catch(NumberFormatException ex){
             System.err.println("YOUR FILE HAS INCORRECT FORMAT,PLEASE CHECK THE FILE AND TRY AGAIN");
-            System.exit(-1);
+            return false;
         }
         //System.out.println("Allowed Words:"+allowedWordSize);
         /**
@@ -89,7 +85,7 @@ public class MainFunction {
             bannedWordSize = Integer.parseInt(content.get(currentPos)); //get the number of banned words
         }catch(NumberFormatException ex){
             System.err.println("YOUR FILE HAS INCORRECT FORMAT,PLEASE CHECK THE FILE AND TRY AGAIN");
-            System.exit(-1);
+            return false;
         }
         
         /**
@@ -99,19 +95,21 @@ public class MainFunction {
             bannedWords.add(content.get(i).toLowerCase());
         }
         currentPos += (bannedWordSize+1);
+        return true;
     }
     
     /**
      * Split and analyze all the message in a pair of line
      * skip the message if the format of the date is wrong;
+     * @return 
      */
-    public void getAllMessage(){
+    public boolean getAllMessage(){
         int numofMessage = 0;
         try{
             numofMessage = Integer.parseInt(content.get(currentPos));
         }catch(NumberFormatException ex){
             System.err.println("YOUR FILE HAS INCORRECT FORMAT,PLEASE CHECK THE FILE AND TRY AGAIN");
-            System.exit(-1);
+            return false;
         }
         for(int i = currentPos+1; i<currentPos + (numofMessage*2) +1; i+=2){
             String message = content.get(i+1);
@@ -133,6 +131,7 @@ public class MainFunction {
             messages.add(m);
             //System.out.println(m.toString());
         }
+        return true;
     }
     
     /**
@@ -176,7 +175,7 @@ public class MainFunction {
         if(misspellWordCount >=3){
             check = false;
         }
-        System.out.println("Message:"+m.getMessage()+"/"+misspellWordCount);
+        //System.out.println("Message:"+m.getMessage()+"/"+misspellWordCount);
         return check;
     }
     
@@ -238,8 +237,7 @@ public class MainFunction {
      * @return 
      */
     public boolean validTimeFormat(String timeString){
-        Matcher m = p.matcher(timeString);
-        return m.matches();
+        return timeString.matches("(1[012]|[1-9]):[0-5][0-9](\\s)?(?i)(am|pm)");
     }
     
     /**
