@@ -17,7 +17,9 @@ public class TextMessage {
      */
     public static void main(String[] args){
         MainFunction m = new MainFunction();
-        m.readFile("src/textmsg.txt");
+        if(!m.readFile("src/textmsg.txt")){
+            System.exit(-1);
+        }
         if(m.analyzeFile()){
             if(m.getAllMessage()){
                 m.confirmMessage();

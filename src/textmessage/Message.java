@@ -12,15 +12,25 @@ import java.util.Date;
  * @author MemeLord
  */
 public class Message {
-    public  Date time;
+    private Date time;
     private String message;
+    private int length;
 
+    public int getLength() {
+        return length;
+    }
+
+    public void setLength(int length) {
+        this.length = length;
+    }
+    
     public Message() {
     }
 
-    public Message(Date time, String message) {
+    public Message(Date time, String message,int length) {
         this.time = time;
         this.message = message;
+        this.length = length;
     }
 
     public Date getTime() {

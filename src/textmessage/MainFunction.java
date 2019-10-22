@@ -27,12 +27,12 @@ import java.util.logging.Logger;
  */
 public class MainFunction {
     
-    private Set<String> allowedWords;
-    private Set<String> bannedWords;
-    private List<Message> messages;
-    private List<String> content;
+    private final Set<String> allowedWords;
+    private final Set<String> bannedWords;
+    private final List<Message> messages;
+    private final List<String> content;
     private int currentPos;
-    private DateFormat format;
+    private final DateFormat format;
     
     public MainFunction() {
         allowedWords = new HashSet<>();
@@ -42,8 +42,12 @@ public class MainFunction {
         messages = new ArrayList<>();
         format = new SimpleDateFormat("hh:mm a");
     }
-    
-    public void readFile(String src){
+    /**
+     * Read the file and add each line into the List<String> for later usage
+     * @param src
+     * @return 
+     */
+    public boolean readFile(String src){
         BufferedReader br = null;
         try {
             File f = new File(src);
@@ -53,21 +57,33 @@ public class MainFunction {
                 content.add(st);
                 //System.out.println(st);
             }
+            if(content.isEmpty()){
+                System.err.println("EMPTY FILE "+src);
+                return false;
+            }
         } catch (IOException ex) {
-            System.out.println("FILE NOT FOUND");
-            System.exit(0);
+            System.err.println("FILE NOT FOUND "+src);
+            return false;
         }
+        return true;
     }
     
+    /**
+     * 
+     * @return 
+     */
     public boolean analyzeFile(){
         int allowedWordSize = 0;
         try{
             allowedWordSize = Integer.parseInt(content.get(currentPos));
+            if(!checkMaximumAllowedWord(allowedWordSize)){
+                System.err.println("The allowed word quantity reach out of boundary (0-30000 words)");
+                return false;
+            }
         }catch(NumberFormatException ex){
             System.err.println("YOUR FILE HAS INCORRECT FORMAT,PLEASE CHECK THE FILE AND TRY AGAIN");
             return false;
         }
-        //System.out.println("Allowed Words:"+allowedWordSize);
         /**
          * Get all the word allowed
          */
@@ -76,18 +92,20 @@ public class MainFunction {
                 allowedWords.add(content.get(i));
             } else {
                 System.err.println("Word "+content.get(i).toLowerCase()+" is invalid (Reason: Too long)");
-            }
-            
+            }   
         }
         currentPos += (allowedWordSize+1);
         int bannedWordSize = 0;
         try{
             bannedWordSize = Integer.parseInt(content.get(currentPos)); //get the number of banned words
+            if(!checkMaximumForbiddenWord(bannedWordSize)){
+                System.err.println("The forbidden word quantity reach out of boundary (0-100 words)");
+                return false;
+            }
         }catch(NumberFormatException ex){
             System.err.println("YOUR FILE HAS INCORRECT FORMAT,PLEASE CHECK THE FILE AND TRY AGAIN");
             return false;
         }
-        
         /**
          * Get all the banned words
          */
@@ -100,7 +118,8 @@ public class MainFunction {
     
     /**
      * Split and analyze all the message in a pair of line
-     * skip the message if the format of the date is wrong;
+     * skip the message if the format of the time is wrong (HH:MM (AM/PM))
+     * or the format of the message is incorrect (Msg_length Msg_content)
      * @return 
      */
     public boolean getAllMessage(){
@@ -112,7 +131,16 @@ public class MainFunction {
             return false;
         }
         for(int i = currentPos+1; i<currentPos + (numofMessage*2) +1; i+=2){
-            String message = content.get(i+1);
+            String message = content.get(i+1).substring(1,content.get(i+1).length()).trim();
+            int length = 0;
+            try{
+               length = Integer.parseInt(content.get(i+1).substring(0, 1).trim()); 
+            }catch(NumberFormatException e){
+                System.err.println("The message: "+message+" construct is in wrong format (msg_length msg_content)");
+                System.out.println(message.substring(0, 1));
+                continue;
+            }
+            
             Date sendTime = null;
             
             try {
@@ -127,7 +155,7 @@ public class MainFunction {
                 System.err.println("The time format of the message \""+message+" \" is unreadable");
                 continue;
             }
-            Message m = new Message(sendTime, message);
+            Message m = new Message(sendTime, message,length);
             messages.add(m);
             //System.out.println(m.toString());
         }
@@ -136,6 +164,7 @@ public class MainFunction {
     
     /**
      * Checking the time allowed to test
+     * The time the message must be tested is from 1:00 AM - 6:59 AM
      * @param m
      * @return 
      */
@@ -156,6 +185,15 @@ public class MainFunction {
         return check;
     }
     
+    /**
+     * Validate the content of the message
+     * The condition to block the message:
+     * 1.The strings “I”, “love”, and “you” appear consecutively, in that order, in any capitalization
+     * 2.Three or more misspelled words
+     * 3.Has a forbidden word
+     * @param m
+     * @return 
+     */
     public boolean checkValidMessage(Message m){
         boolean check = true;
         if(m.getMessage().toLowerCase().contains("I love you".toLowerCase())){
@@ -179,6 +217,11 @@ public class MainFunction {
         return check;
     }
     
+    /**
+     * End point function: Show all the message,
+     * if the message is failed in the validation, will print out Message #n: FAILED TO SEND
+     * otherwise, print out Message #n: (message_content)
+     */
     public void confirmMessage(){
         int current = 1;
         for(Message m: messages){
@@ -232,7 +275,7 @@ public class MainFunction {
     }
     
     /**
-     * Valid the format of the time imput
+     * Valid the format of the time input
      * @param timeString
      * @return 
      */
@@ -248,5 +291,22 @@ public class MainFunction {
     public boolean checkWordSize(String word){
         return word.length() <= 29;
     }
-
+    
+    /**
+     * Check the boundary of the allowed word
+     * @param size
+     * @return 
+     */
+    public boolean checkMaximumAllowedWord(int size){
+        return size > 0 && size <30000;
+    }
+    
+    /**
+     * Check the boundary of the forbidden word
+     * @param size
+     * @return 
+     */
+    public boolean checkMaximumForbiddenWord(int size){
+        return size >0 && size <100;
+    }
 }
