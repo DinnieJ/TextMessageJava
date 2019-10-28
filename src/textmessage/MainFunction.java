@@ -49,6 +49,10 @@ public class MainFunction {
      */
     public boolean readFile(String src){
         BufferedReader br = null;
+        if(!src.endsWith(".txt")){
+            System.err.println("WRONG FILE FORMAT (require .txt)");
+            return false;
+        }
         try {
             File f = new File(src);
             br = new BufferedReader(new FileReader(f));
@@ -131,13 +135,23 @@ public class MainFunction {
             return false;
         }
         for(int i = currentPos+1; i<currentPos + (numofMessage*2) +1; i+=2){
-            String message = content.get(i+1).substring(1,content.get(i+1).length()).trim();
+            String [] splitMsg = content.get(i+1).split(" ");
+            
+            //String message = content.get(i+1).substring(1,content.get(i+1).length()).trim();
             int length = 0;
+            String message ="";
+            for(int j = 1;j<splitMsg.length;j++){
+                message += (splitMsg[j] +" ");
+            }
             try{
-               length = Integer.parseInt(content.get(i+1).substring(0, 1).trim()); 
+               length = Integer.parseInt(splitMsg[0]);
+               if(!checkMaximumWordsInMessage(length) || length != splitMsg.length-1 ){
+                   System.err.println("WRONG NUMBER OF WORDS IN MESSAGE:" + message );
+                   continue;
+               }
             }catch(NumberFormatException e){
                 System.err.println("The message: "+message+" construct is in wrong format (msg_length msg_content)");
-                System.out.println(message.substring(0, 1));
+                System.out.println(message.trim());
                 continue;
             }
             
@@ -155,7 +169,7 @@ public class MainFunction {
                 System.err.println("The time format of the message \""+message+" \" is unreadable");
                 continue;
             }
-            Message m = new Message(sendTime, message,length);
+            Message m = new Message(sendTime, message.trim(),length);
             messages.add(m);
             //System.out.println(m.toString());
         }
@@ -308,5 +322,14 @@ public class MainFunction {
      */
     public boolean checkMaximumForbiddenWord(int size){
         return size >0 && size <100;
+    }
+    
+    /**
+     * Check maximum word in the message
+     * @param word
+     * @return 
+     */
+    public boolean checkMaximumWordsInMessage(int word){
+        return word < 50 && word > 0;
     }
 }

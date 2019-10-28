@@ -25,7 +25,7 @@ public class MainFunctionTest extends TestCase {
      */
     @Test
     public void testReadCorrectFile(){
-        System.out.println("Test read existed file:");
+        System.out.println("TC1-Test read existed file:");
         MainFunction m = new MainFunction();
         boolean result = m.readFile("src/textmsg.txt");
         assertEquals("The file should be read without error", true, result);
@@ -40,7 +40,7 @@ public class MainFunctionTest extends TestCase {
      */
     @Test
     public void testReadNonExistFile(){
-        System.out.println("Test read non-existed file:");
+        System.out.println("TC2-Test read non-existed file:");
         System.out.println("Expected output: FILE NOT FOUND");
         MainFunction m = new MainFunction();
         boolean result = m.readFile("src/text.txt");
@@ -57,7 +57,7 @@ public class MainFunctionTest extends TestCase {
      */
     @Test
     public void testReadFileEmpty(){
-        System.out.println("Test read empty file:");
+        System.out.println("TC3-Test read empty file:");
         System.out.println("Expected output: EMPTY FILE");
         MainFunction m = new MainFunction();
         boolean result = m.readFile("src/emptyfile.txt");
@@ -66,7 +66,25 @@ public class MainFunctionTest extends TestCase {
         System.out.println("\tTest Read empty file: PASS");
         System.out.println();
     }
-    
+    /**
+     * Test case 4: Test read incorrect file
+     * Success: Show error message "WRONG FILE FORMAT"
+     * Failure: Read file successful without error
+     */
+    @Test
+    public void testReadIncorrectFile(){
+        System.out.println("Test read incorrect file:");
+        System.out.println("Expected output:WRONG FILE FORMAT");
+        MainFunction m = new MainFunction();
+        boolean result = m.readFile("src/wrongformatfile");
+        boolean expectedResult = false;
+        assertEquals("Should show the error \"WRONG FILE FORMAT\" and stop the application", expectedResult, result);
+        System.out.println("\tTest read incorrect file: PASS");
+        System.out.println();
+    }
+    /**
+     * 
+     */
     public static void main(String []args) {  
             junit.textui.TestRunner.run(new TestSuite(MainFunctionTest.class));  
     } 
