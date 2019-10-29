@@ -342,6 +342,6 @@ public class MainFunction {
      * @return 
      */
     public boolean isWhiteSpace(String word){
-        return word.isEmpty();
+        return word.trim().equals("");
     }
 }
