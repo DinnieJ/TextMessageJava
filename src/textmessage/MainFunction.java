@@ -58,6 +58,7 @@ public class MainFunction {
             br = new BufferedReader(new FileReader(f));
             String st="";
             while((st = br.readLine()) != null){
+                if(!isWhiteSpace(st))
                 content.add(st);
                 //System.out.println(st);
             }
@@ -99,6 +100,8 @@ public class MainFunction {
             }   
         }
         currentPos += (allowedWordSize+1);
+        
+        
         int bannedWordSize = 0;
         try{
             bannedWordSize = Integer.parseInt(content.get(currentPos)); //get the number of banned words
@@ -331,5 +334,14 @@ public class MainFunction {
      */
     public boolean checkMaximumWordsInMessage(int word){
         return word < 50 && word > 0;
+    }
+    
+    /**
+     * Check if the word is whitespace
+     * @param word
+     * @return 
+     */
+    public boolean isWhiteSpace(String word){
+        return word.isEmpty();
     }
 }
