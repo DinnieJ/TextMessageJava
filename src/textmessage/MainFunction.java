@@ -138,7 +138,7 @@ public class MainFunction {
             return false;
         }
         for(int i = currentPos+1; i<currentPos + (numofMessage*2) +1; i+=2){
-            String [] splitMsg = content.get(i+1).split(" ");
+            String [] splitMsg = content.get(i+1).split("\\s+");
             
             //String message = content.get(i+1).substring(1,content.get(i+1).length()).trim();
             int length = 0;
@@ -216,7 +216,7 @@ public class MainFunction {
         if(m.getMessage().toLowerCase().contains("I love you".toLowerCase())){
             check = false;
         }
-        String[] messArr = m.getMessage().split(" ");
+        String[] messArr = m.getMessage().split("\\s+");
         int misspellWordCount = 0;
         for(String s: messArr){
             if(isForbiddenWord(s)){
