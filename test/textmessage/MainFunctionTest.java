@@ -27,8 +27,9 @@ public class MainFunctionTest extends TestCase {
     public void testReadCorrectFile(){
         System.out.println("TC1-Test read existed file:");
         MainFunction m = new MainFunction();
-        boolean result = m.readFile("src/textmsg.txt");
-        assertEquals("The file should be read without error", true, result);
+        boolean result = m.readFile("src/textmsg.t");
+        boolean expectedResult = true;
+        assertEquals("The file should be read without error", expectedResult, result);
         System.out.println("\tTest read existed file: PASS");
         System.out.println();
     }

@@ -93,8 +93,8 @@ public class MainFunction {
          * Get all the word allowed
          */
         for(int i = currentPos+1; i<currentPos + allowedWordSize + 1 ; i++){
-            if( checkWordSize(content.get(i)) ){
-                allowedWords.add(content.get(i));
+            if( checkWordSize(content.get(i).trim())){
+                allowedWords.add(content.get(i).trim());
             } else {
                 System.err.println("Word "+content.get(i).toLowerCase()+" is invalid (Reason: Too long)");
             }   
@@ -117,7 +117,11 @@ public class MainFunction {
          * Get all the banned words
          */
         for(int i = currentPos+1; i < currentPos+ bannedWordSize+1 ;i++){
-            bannedWords.add(content.get(i).toLowerCase());
+            if(checkWordSize(content.get(i).trim()))
+                bannedWords.add(content.get(i).toLowerCase().trim());
+            else{
+                System.err.println("Word "+content.get(i).toLowerCase()+" is invalid (Reason: Too long)");
+            }
         }
         currentPos += (bannedWordSize+1);
         return true;
