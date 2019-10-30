@@ -20,7 +20,7 @@ public class TextMessage {
         if(!m.readFile("src/textmsg.txt")){
             System.exit(-1);
         }
-        if(m.analyzeFile()){
+        if(m.analyzeDictionary() && m.analyzeForbidden()){
             if(m.getAllMessage()){
                 m.confirmMessage();
             }else{

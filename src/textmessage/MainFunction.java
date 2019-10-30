@@ -77,7 +77,7 @@ public class MainFunction {
      * 
      * @return 
      */
-    public boolean analyzeFile(){
+    public boolean analyzeDictionary(){
         int allowedWordSize = 0;
         try{
             allowedWordSize = Integer.parseInt(content.get(currentPos));
@@ -100,8 +100,10 @@ public class MainFunction {
             }   
         }
         currentPos += (allowedWordSize+1);
-        
-        
+        return true;
+    }
+    
+    public boolean analyzeForbidden(){
         int bannedWordSize = 0;
         try{
             bannedWordSize = Integer.parseInt(content.get(currentPos)); //get the number of banned words
