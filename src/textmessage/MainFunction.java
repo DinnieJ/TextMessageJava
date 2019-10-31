@@ -86,13 +86,24 @@ public class MainFunction {
                 return false;
             }
         }catch(NumberFormatException ex){
-            System.err.println("YOUR FILE HAS INCORRECT FORMAT,PLEASE CHECK THE FILE AND TRY AGAIN");
+            System.err.println("YOUR FILE HAS INCORRECT FORMAT,PLEASE CHECK THE FILE AND TRY AGAIN (error at dictionary)");
             return false;
+        }
+        int bannedWordSizePos = currentPos+allowedWordSize+1;
+        boolean check = true;
+        try{
+            Integer.parseInt(content.get(bannedWordSizePos));
+        }catch(NumberFormatException e){
+            check = false;
         }
         /**
          * Get all the word allowed
          */
         for(int i = currentPos+1; i<currentPos + allowedWordSize + 1 ; i++){
+            if(check == false){
+                System.err.println("YOUR FILE HAS INCORRECT FORMAT,PLEASE CHECK THE FILE AND TRY AGAIN (error at dictionary)");
+                return false;
+            }
             if( checkWordSize(content.get(i).trim())){
                 allowedWords.add(content.get(i).trim());
             } else {
@@ -112,13 +123,24 @@ public class MainFunction {
                 return false;
             }
         }catch(NumberFormatException ex){
-            System.err.println("YOUR FILE HAS INCORRECT FORMAT,PLEASE CHECK THE FILE AND TRY AGAIN");
+            System.err.println("YOUR FILE HAS INCORRECT FORMAT,PLEASE CHECK THE FILE AND TRY AGAIN(error at forbidden)");
             return false;
+        }
+        int numOfMessagePos = bannedWordSize + currentPos + 1;
+        boolean check = true;
+        try{
+            Integer.parseInt(content.get(numOfMessagePos));
+        }catch(NumberFormatException ex){
+            check = false;
         }
         /**
          * Get all the banned words
          */
         for(int i = currentPos+1; i < currentPos+ bannedWordSize+1 ;i++){
+            if(!check){
+                System.err.println("YOUR FILE HAS INCORRECT FORMAT,PLEASE CHECK THE FILE AND TRY AGAIN(error at forbidden)");
+                return false;
+            }
             if(checkWordSize(content.get(i).trim()))
                 bannedWords.add(content.get(i).toLowerCase().trim());
             else{
@@ -140,7 +162,7 @@ public class MainFunction {
         try{
             numofMessage = Integer.parseInt(content.get(currentPos));
         }catch(NumberFormatException ex){
-            System.err.println("YOUR FILE HAS INCORRECT FORMAT,PLEASE CHECK THE FILE AND TRY AGAIN");
+            System.err.println("YOUR FILE HAS INCORRECT FORMAT,PLEASE CHECK THE FILE AND TRY AGAIN (error at get message)");
             return false;
         }
         for(int i = currentPos+1; i<currentPos + (numofMessage*2) +1; i+=2){

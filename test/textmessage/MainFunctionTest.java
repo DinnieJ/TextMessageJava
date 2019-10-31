@@ -25,7 +25,7 @@ public class MainFunctionTest extends TestCase {
      */
     @Test
     public void testReadCorrectFile(){
-        System.out.println("TC1-Test read existed file:");
+        System.out.println("TC001-Test read existed file:");
         MainFunction m = new MainFunction();
         boolean result = m.readFile("src/textmsg.t");
         boolean expectedResult = true;
@@ -41,7 +41,7 @@ public class MainFunctionTest extends TestCase {
      */
     @Test
     public void testReadNonExistFile(){
-        System.out.println("TC2-Test read non-existed file:");
+        System.out.println("TC002-Test read non-existed file:");
         System.out.println("Expected output: FILE NOT FOUND");
         MainFunction m = new MainFunction();
         boolean result = m.readFile("src/text.txt");
@@ -58,7 +58,7 @@ public class MainFunctionTest extends TestCase {
      */
     @Test
     public void testReadFileEmpty(){
-        System.out.println("TC3-Test read empty file:");
+        System.out.println("TC003-Test read empty file:");
         System.out.println("Expected output: EMPTY FILE");
         MainFunction m = new MainFunction();
         boolean result = m.readFile("src/emptyfile.txt");
@@ -74,7 +74,7 @@ public class MainFunctionTest extends TestCase {
      */
     @Test
     public void testReadIncorrectFile(){
-        System.out.println("Test read incorrect file:");
+        System.out.println("TC-004:Test read incorrect file:");
         System.out.println("Expected output:WRONG FILE FORMAT");
         MainFunction m = new MainFunction();
         boolean result = m.readFile("src/wrongformatfile");
