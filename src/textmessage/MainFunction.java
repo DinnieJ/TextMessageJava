@@ -144,6 +144,22 @@ public class MainFunction {
             return false;
         }
         for(int i = currentPos+1; i<currentPos + (numofMessage*2) +1; i+=2){
+            
+            Date sendTime = null;
+            
+            try {
+                if(validTimeFormat(content.get(i))){
+                    sendTime = format.parse(content.get(i));
+                }
+                else{
+                    System.err.println("Invalid time format \""+content.get(i)+"\"");
+                    continue;
+                }
+            } catch (ParseException ex) {
+                System.err.println("The time format of the message \""+content.get(i)+" \" is unreadable");
+                continue;
+            }
+            
             String [] splitMsg = content.get(i+1).split("\\s+");
             
             //String message = content.get(i+1).substring(1,content.get(i+1).length()).trim();
@@ -154,7 +170,7 @@ public class MainFunction {
             }
             try{
                length = Integer.parseInt(splitMsg[0]);
-               if(!checkMaximumWordsInMessage(length) || length != splitMsg.length-1 ){
+               if(!checkMaximumWordsInMessage(message) || length != splitMsg.length-1 ){
                    System.err.println("WRONG NUMBER OF WORDS IN MESSAGE:" + message );
                    continue;
                }
@@ -164,20 +180,6 @@ public class MainFunction {
                 continue;
             }
             
-            Date sendTime = null;
-            
-            try {
-                if(validTimeFormat(content.get(i))){
-                    sendTime = format.parse(content.get(i));
-                }
-                else{
-                    System.err.println("Invalid time for message \""+message+"\"");
-                    continue;
-                }
-            } catch (ParseException ex) {
-                System.err.println("The time format of the message \""+message+" \" is unreadable");
-                continue;
-            }
             Message m = new Message(sendTime, message.trim(),length);
             messages.add(m);
             //System.out.println(m.toString());
@@ -335,11 +337,12 @@ public class MainFunction {
     
     /**
      * Check maximum word in the message
-     * @param word
+     * @param message
      * @return 
      */
-    public boolean checkMaximumWordsInMessage(int word){
-        return word < 50 && word > 0;
+    public boolean checkMaximumWordsInMessage(String message){
+        String [] sMessage = message.split("\\s+");
+        return sMessage.length < 50 && sMessage.length > 0;
     }
     
     /**
