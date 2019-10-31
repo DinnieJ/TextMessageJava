@@ -1,9 +1,10 @@
-5
-4
+6.00000
+i
 jason
 love
 you   
-i    
+ok
+another
 2
 ahole
 jerk
