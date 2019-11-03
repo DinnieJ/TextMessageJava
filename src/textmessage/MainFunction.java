@@ -32,7 +32,7 @@ public class MainFunction {
     private final List<Message> messages;
     private final List<String> content;
     private int currentPos;
-    private final DateFormat format;
+    public static final DateFormat format = new SimpleDateFormat("hh:mm a");
     
     public MainFunction() {
         allowedWords = new HashSet<>();
@@ -40,7 +40,6 @@ public class MainFunction {
         content = new ArrayList<>();
         currentPos = 0;
         messages = new ArrayList<>();
-        format = new SimpleDateFormat("hh:mm a");
     }
     /**
      * Read the file and add each line into the List<String> for later usage
@@ -92,7 +91,7 @@ public class MainFunction {
         int bannedWordSizePos = currentPos+allowedWordSize+1;
         boolean check = true;
         try{
-            Integer.parseInt(content.get(bannedWordSizePos));
+            Double.parseDouble(content.get(bannedWordSizePos));
         }catch(NumberFormatException e){
             check = false;
         }
@@ -175,11 +174,11 @@ public class MainFunction {
                 }
                 else{
                     System.err.println("Invalid time format \""+content.get(i)+"\"");
-                    continue;
+                    return false;
                 }
             } catch (ParseException ex) {
                 System.err.println("The time format of the message \""+content.get(i)+" \" is unreadable");
-                continue;
+                return false;
             }
             
             String [] splitMsg = content.get(i+1).split("\\s+");
@@ -194,17 +193,24 @@ public class MainFunction {
                length = Integer.parseInt(splitMsg[0]);
                if(!checkMaximumWordsInMessage(message) || length != splitMsg.length-1 ){
                    System.err.println("WRONG NUMBER OF WORDS IN MESSAGE:" + message );
-                   continue;
+                   return false;
                }
             }catch(NumberFormatException e){
                 System.err.println("The message: "+message+" construct is in wrong format (msg_length msg_content)");
                 System.out.println(message.trim());
-                continue;
+                return false;
             }
             
             Message m = new Message(sendTime, message.trim(),length);
             messages.add(m);
             //System.out.println(m.toString());
+        }
+        currentPos += (numofMessage*2)+1;
+        if(currentPos != content.size()){
+            System.out.println("currentPos:"+currentPos);
+            System.out.println("content:"+content.size());
+            System.err.println("There is still more data to read, please check file format");
+            return false;
         }
         return true;
     }
