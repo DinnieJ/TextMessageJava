@@ -428,7 +428,7 @@ public class MainFunctionTest extends TestCase {
     public void test029ReadLargerNumberOfMessage(){
         System.out.println("TC029-Test get correct message");
         MainFunction m = new MainFunction();
-        assertEquals("FAILED TO READ FILE", m.readFile("src/testfile/UTC028.txt"),true);
+        assertEquals("FAILED TO READ FILE", m.readFile("src/testfile/UTC029.txt"),true);
         assertEquals("Read first dictionary failed",m.analyzeDictionary(),true);
         assertEquals("Failed to read forbidden", m.analyzeForbidden(),true);
         boolean result = m.getAllMessage();
@@ -452,6 +452,123 @@ public class MainFunctionTest extends TestCase {
         boolean expectedResult = false;
         assertEquals("Should not be read and stop the application",expectedResult, result);
         System.out.println("\tTC-030:PASS");
+        System.out.println();
+    }
+    /**
+     * Test case 31:
+     * @param args 
+     */
+    public void test031ReadWrongNumberOfMessage(){
+        System.out.println("TC031-Test wrong number of message:");
+        MainFunction m = new MainFunction();
+        assertEquals("FAILED TO READ FILE", m.readFile("src/testfile/UTC031.txt"),true);
+        assertEquals("Read first dictionary failed",m.analyzeDictionary(),true);
+        assertEquals("Failed to read forbidden", m.analyzeForbidden(),true);
+        boolean result = m.getAllMessage();
+        boolean expectedResult = false;
+        assertEquals("Should not be read and stop the application",expectedResult, result);
+        System.out.println("\tTC-031:PASS");
+        System.out.println();
+    }
+    /**
+     * Test case 32:
+     * @param args 
+     */
+    @Test
+    public void test032ReadWrongFormatNumberOfMessage(){
+        System.out.println("TC032-Test wrong format number of message:");
+        MainFunction m = new MainFunction();
+        assertEquals("FAILED TO READ FILE", m.readFile("src/testfile/UTC032.txt"),true);
+        assertEquals("Read first dictionary failed",m.analyzeDictionary(),true);
+        boolean result = m.getAllMessage();
+        boolean expectedResult = false;
+        assertEquals("Should not be read and stop the application",expectedResult, result);
+        System.out.println("\tTC-032:PASS");
+        System.out.println();
+    }
+    /**
+     * Test case 33:
+     * @param args 
+     */
+    @Test
+    public void test033ReadSmallerNumberOfWordInMessage(){
+        System.out.println("TC033-Test smaller number of word in message:");
+        MainFunction m = new MainFunction();
+        assertEquals("FAILED TO READ FILE", m.readFile("src/testfile/UTC033.txt"),true);
+        assertEquals("Read first dictionary failed",m.analyzeDictionary(),true);
+        assertEquals("Failed to read forbidden", m.analyzeForbidden(),true);
+        boolean result = m.getAllMessage();
+        boolean expectedResult = false;
+        assertEquals("Should not be read and stop the application",expectedResult, result);
+        System.out.println("\tTC-033:PASS");
+        System.out.println();
+    }
+    /**
+     * Test case 34:
+     * @param args 
+     */
+    @Test
+    public void test034ReadLargerNumberOfWordInMessage(){
+        System.out.println("TC034-Test larger number of word in message:");
+        MainFunction m = new MainFunction();
+        assertEquals("FAILED TO READ FILE", m.readFile("src/testfile/UTC034.txt"),true);
+        assertEquals("Read first dictionary failed",m.analyzeDictionary(),true);
+        assertEquals("Failed to read forbidden", m.analyzeForbidden(),true);
+        boolean result = m.getAllMessage();
+        boolean expectedResult = false;
+        assertEquals("Should not be read and stop the application",expectedResult, result);
+        System.out.println("\tTC-034:PASS");
+        System.out.println();
+    }
+    /**
+     * Test case 35:
+     * @param args 
+     */
+    @Test
+    public void test035ReadEmptyMessage(){
+        System.out.println("TC035-Test empty message:");
+        MainFunction m = new MainFunction();
+        assertEquals("FAILED TO READ FILE", m.readFile("src/testfile/UTC035.txt"),true);
+        assertEquals("Read first dictionary failed",m.analyzeDictionary(),true);
+        assertEquals("Failed to read forbidden", m.analyzeForbidden(),true);
+        boolean result = m.getAllMessage();
+        boolean expectedResult = true;
+        assertEquals("Should be read without error",expectedResult, result);
+        System.out.println("\tTC-035:PASS");
+        System.out.println();
+    }
+    /**
+     * Test case 36:
+     * @param args 
+     */
+    @Test
+    public void test036ReadWrongFormatNumberOfWordInMessage(){
+        System.out.println("TC036-Test wrong format number of word in message:");
+        MainFunction m = new MainFunction();
+        assertEquals("FAILED TO READ FILE", m.readFile("src/testfile/UTC036.txt"),true);
+        assertEquals("Read first dictionary failed",m.analyzeDictionary(),true);
+        assertEquals("Failed to read forbidden", m.analyzeForbidden(),true);
+        boolean result = m.getAllMessage();
+        boolean expectedResult = false;
+        assertEquals("Should be read without error",expectedResult, result);
+        System.out.println("\tTC-036:PASS");
+        System.out.println();
+    }
+    /**
+     * Test case 37:
+     * @param args 
+     */
+    @Test
+    public void test037ReadWrongTimeFormat(){
+        System.out.println("TC036-Test wrong time format:");
+        MainFunction m = new MainFunction();
+        assertEquals("FAILED TO READ FILE", m.readFile("src/testfile/UTC037.txt"),true);
+        assertEquals("Read first dictionary failed",m.analyzeDictionary(),true);
+        assertEquals("Failed to read forbidden", m.analyzeForbidden(),true);
+        boolean result = m.getAllMessage();
+        boolean expectedResult = false;
+        assertEquals("Should be read without error",expectedResult, result);
+        System.out.println("\tTC-037:PASS");
         System.out.println();
     }
     public static void main(String []args) {  

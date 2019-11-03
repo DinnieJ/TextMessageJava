@@ -17,7 +17,7 @@ public class TextMessage {
      */
     public static void main(String[] args){
         MainFunction m = new MainFunction();
-        if(!m.readFile("src/textmsg.txt")){
+        if(!m.readFile("src/testfile/UTC035.txt")){
             System.exit(-1);
         }
         if(m.analyzeDictionary() && m.analyzeForbidden()){

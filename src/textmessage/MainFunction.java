@@ -58,7 +58,7 @@ public class MainFunction {
             String st="";
             while((st = br.readLine()) != null){
                 if(!isWhiteSpace(st))
-                content.add(st);
+                content.add(st.trim());
                 //System.out.println(st);
             }
             if(content.isEmpty()){
@@ -122,7 +122,7 @@ public class MainFunction {
                 return false;
             }
         }catch(NumberFormatException ex){
-            System.err.println("YOUR FILE HAS INCORRECT FORMAT,PLEASE CHECK THE FILE AND TRY AGAIN(error at forbidden)");
+            System.err.println("YOUR FILE HAS INCORRECT FORMAT,PLEASE CHECK THE FILE AND TRY AGAIN(error at forbidden) 1");
             return false;
         }
         int numOfMessagePos = bannedWordSize + currentPos + 1;
@@ -131,13 +131,14 @@ public class MainFunction {
             Integer.parseInt(content.get(numOfMessagePos));
         }catch(NumberFormatException ex){
             check = false;
+            System.out.println("Wrong here "+content.get(numOfMessagePos));
         }
         /**
          * Get all the banned words
          */
         for(int i = currentPos+1; i < currentPos+ bannedWordSize+1 ;i++){
             if(!check){
-                System.err.println("YOUR FILE HAS INCORRECT FORMAT,PLEASE CHECK THE FILE AND TRY AGAIN(error at forbidden)");
+                System.err.println("YOUR FILE HAS INCORRECT FORMAT,PLEASE CHECK THE FILE AND TRY AGAIN(error at forbidden) 2:"+currentPos);
                 return false;
             }
             if(checkWordSize(content.get(i).trim()))
@@ -162,6 +163,9 @@ public class MainFunction {
             numofMessage = Integer.parseInt(content.get(currentPos));
         }catch(NumberFormatException ex){
             System.err.println("YOUR FILE HAS INCORRECT FORMAT,PLEASE CHECK THE FILE AND TRY AGAIN (error at get message)");
+            return false;
+        }
+        if(currentPos+(numofMessage*2)+1 > content.size()){
             return false;
         }
         for(int i = currentPos+1; i<currentPos + (numofMessage*2) +1; i+=2){
