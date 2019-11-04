@@ -5,6 +5,8 @@
  */
 package textmessage;
 
+import java.text.ParseException;
+import java.util.Date;
 import junit.framework.TestCase;
 import junit.framework.TestSuite;
 import org.junit.Test;
@@ -478,9 +480,10 @@ public class MainFunctionTest extends TestCase {
     public void test032ReadWrongFormatNumberOfMessage(){
         System.out.println("TC032-Test wrong format number of message:");
         MainFunction m = new MainFunction();
+        m.setSrc("src/testfile/UTC032.txt");
         assertEquals("FAILED TO READ FILE", m.readFile("src/testfile/UTC032.txt"),true);
         assertEquals("Read first dictionary failed",m.analyzeDictionary(),true);
-        boolean result = m.getAllMessage();
+        boolean result = m.analyzeForbidden();
         boolean expectedResult = false;
         assertEquals("Should not be read and stop the application",expectedResult, result);
         System.out.println("\tTC-032:PASS");
@@ -560,7 +563,7 @@ public class MainFunctionTest extends TestCase {
      */
     @Test
     public void test037ReadWrongTimeFormat(){
-        System.out.println("TC036-Test wrong time format:");
+        System.out.println("TC037-Test wrong time format:");
         MainFunction m = new MainFunction();
         assertEquals("FAILED TO READ FILE", m.readFile("src/testfile/UTC037.txt"),true);
         assertEquals("Read first dictionary failed",m.analyzeDictionary(),true);
@@ -570,6 +573,103 @@ public class MainFunctionTest extends TestCase {
         assertEquals("Should be read without error",expectedResult, result);
         System.out.println("\tTC-037:PASS");
         System.out.println();
+    }
+    /**
+     * Test case 38:
+     * @param args 
+     */
+    @Test
+    public void test038CheckSendTime1_00AM() throws ParseException{
+        System.out.println("TC038-Check send time at 1:00 AM :");
+        MainFunction m = new MainFunction();
+        Date d = m.format.parse("1:00 AM");
+        boolean result = m.checkValidTime(d);
+        boolean expectedResult = false;
+        assertEquals("Should be read without error",expectedResult, result);
+        System.out.println("\tTC-038:PASS");
+        System.out.println();
+    }
+    /**
+     * Test case 39:
+     * @param args 
+     */
+    @Test
+    public void test039CheckSendTime00_59AM() throws ParseException{
+        System.out.println("TC033-Check send time at 00:59 AM :");
+        MainFunction m = new MainFunction();
+        Date d = m.format.parse("00:59 AM");
+        boolean result = m.checkValidTime(d);
+        boolean expectedResult = true;
+        assertEquals("Should be read without error",expectedResult, result);
+        System.out.println("\tTC-039:PASS");
+        System.out.println();
+    }
+    /**
+     * Test case 40:
+     * @param args 
+     */
+    @Test
+    public void test040CheckSendTime1_01AM() throws ParseException{
+        System.out.println("TC040-Check send time at 1:01AM :");
+        MainFunction m = new MainFunction();
+        Date d = m.format.parse("1:01 AM");
+        boolean result = m.checkValidTime(d);
+        boolean expectedResult = false;
+        assertEquals("Should be read without error",expectedResult, result);
+        System.out.println("\tTC-040:PASS");
+        System.out.println();
+    }
+    /**
+     * Test case 41:
+     * @param args 
+     */
+    @Test
+    public void test041CheckSendTime6_59AM() throws ParseException{
+        System.out.println("TC041-Check send time at 6:59AM :");
+        MainFunction m = new MainFunction();
+        Date d = m.format.parse("6:59 AM");
+        boolean result = m.checkValidTime(d);
+        boolean expectedResult = false;
+        assertEquals("Should be read without error",expectedResult, result);
+        System.out.println("\tTC-040:PASS");
+        System.out.println();
+    }
+    /**
+     * Test case 42:
+     * @param args 
+     */
+    @Test
+    public void test042CheckSendTime7_00AM() throws ParseException{
+        System.out.println("TC042-Check send time at 7:00AM :");
+        MainFunction m = new MainFunction();
+        Date d = m.format.parse("7:00 AM");
+        boolean result = m.checkValidTime(d);
+        boolean expectedResult = true;
+        assertEquals("Should be read without error",expectedResult, result);
+        System.out.println("\tTC-041:PASS");
+        System.out.println();
+    }
+    /**
+     * Test case 43:
+     * @param args 
+     */
+    @Test
+    public void test043CheckSendTime6_58AM() throws ParseException{
+        System.out.println("TC043-Check send time at 7:00AM :");
+        MainFunction m = new MainFunction();
+        Date d = m.format.parse("6:58 AM");
+        boolean result = m.checkValidTime(d);
+        boolean expectedResult = false;
+        assertEquals("Should be read without error",expectedResult, result);
+        System.out.println("\tTC-042:PASS");
+        System.out.println();
+    }
+    @Test
+    public void defaultd(){
+        MainFunction m = new MainFunction();
+        boolean result = m.validTimeFormat("06:59 AM");
+        boolean ex = true;
+        assertEquals(ex, result);
     }
     public static void main(String []args) {  
             junit.textui.TestRunner.run(new TestSuite(MainFunctionTest.class));  

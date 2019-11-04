@@ -17,7 +17,8 @@ public class TextMessage {
      */
     public static void main(String[] args){
         MainFunction m = new MainFunction();
-        if(!m.readFile("src/testfile/UTC035.txt")){
+        m.setSrc("src/testfile/UTC032.txt");
+        if(!m.readFile("src/testfile/UTC032.txt")){
             System.exit(-1);
         }
         if(m.analyzeDictionary() && m.analyzeForbidden()){
@@ -27,6 +28,7 @@ public class TextMessage {
                 System.exit(-1);
             }
         }else{
+            System.out.println("day nay");
             System.exit(-1);
         }
         
