@@ -130,8 +130,7 @@ public class MainFunctionTest extends TestCase {
     }
     
     /**
-     * Test case 8
-     * @param args 
+     * Test case 8 
      */
     public void test008FileWithZero(){
         System.out.println("TC008-Test read file with zero:");
@@ -144,8 +143,7 @@ public class MainFunctionTest extends TestCase {
         System.out.println();  
     }
     /**
-     * Test case 9:
-     * @param args 
+     * Test case 9: 
      */
     public void test009FileWith30001Word(){
         System.out.println("TC009-Test read dictionary with 30001 word:");
@@ -159,8 +157,7 @@ public class MainFunctionTest extends TestCase {
     }
     
     /**
-     * Test case 10:
-     * @param args 
+     * Test case 10: 
      */
     public void test010DictionaryWithNegativeNumberOfWord(){
         System.out.println("TC010-Test read dictionary with negative num of word:");
@@ -173,8 +170,7 @@ public class MainFunctionTest extends TestCase {
         System.out.println(); 
     }
     /**
-     * Test case 11:
-     * @param args 
+     * Test case 11: 
      */
     @Test
     public void test011DictionaryWithDoubleNumberOfWord(){
@@ -188,8 +184,7 @@ public class MainFunctionTest extends TestCase {
         System.out.println(); 
     }
     /**
-     * Test case 12:
-     * @param args 
+     * Test case 12: 
      */
     @Test
     public void test012DictionaryWithDoubleTypeButIntValue(){
@@ -203,8 +198,7 @@ public class MainFunctionTest extends TestCase {
         System.out.println(); 
     }
     /**
-     * Test case 13:
-     * @param args 
+     * Test case 13: 
      */
     @Test
     public void test013DictionaryCorrectWithWhitespace(){
@@ -219,8 +213,7 @@ public class MainFunctionTest extends TestCase {
     }
     
     /**
-     * Test case 15:
-     * @param args 
+     * Test case 15: 
      */
     @Test
     public void test015DictionaryWithOneWord(){
@@ -234,8 +227,7 @@ public class MainFunctionTest extends TestCase {
         System.out.println(); 
     }
     /**
-     * Test case 16:
-     * @param args 
+     * Test case 16: 
      */
     public void test016DictionaryWithoutNumberOfWord(){
         System.out.println("TC016-Test dictionary without number of word:");
@@ -248,8 +240,7 @@ public class MainFunctionTest extends TestCase {
         System.out.println(); 
     }
     /**
-     * Test case 17:
-     * @param args 
+     * Test case 17: 
      */
     @Test
     public void test017ReadCorrectForbidden(){
@@ -264,8 +255,7 @@ public class MainFunctionTest extends TestCase {
         System.out.println();
     }
     /**
-     * Test case 18:
-     * @param args 
+     * Test case 18: 
      */
     @Test
     public void test018ReadSmallerNumberOfWordForbidden(){
@@ -280,8 +270,7 @@ public class MainFunctionTest extends TestCase {
         System.out.println();
     }
     /**
-     * Test case 19:
-     * @param args 
+     * Test case 19: 
      */
     @Test
     public void test019ReadLargerNumberOfWordForbidden(){
@@ -296,8 +285,7 @@ public class MainFunctionTest extends TestCase {
         System.out.println();
     }
     /**
-     * Test case 20:
-     * @param args 
+     * Test case 20: 
      */
     @Test
     public void test020ReadForbiddenWithZero(){
@@ -312,8 +300,7 @@ public class MainFunctionTest extends TestCase {
         System.out.println();
     }
     /**
-     * Test case 21:
-     * @param args 
+     * Test case 21: 
      */
     @Test
     public void test021Read100ForbiddenWord(){
@@ -328,8 +315,7 @@ public class MainFunctionTest extends TestCase {
         System.out.println();
     }
     /**
-     * Test case 22:
-     * @param args 
+     * Test case 22: 
      */
     @Test
     public void test022ReadNegativeForbiddenWordNumber(){
@@ -344,8 +330,7 @@ public class MainFunctionTest extends TestCase {
         System.out.println();
     }
     /**
-     * Test case 23:
-     * @param args 
+     * Test case 23: 
      */
     @Test
     public void test023ForbiddenWithDoubleTypeNumOfWord(){
@@ -360,8 +345,7 @@ public class MainFunctionTest extends TestCase {
         System.out.println();
     }
     /**
-     * Test case 24
-     * @param args 
+     * Test case 24 
      */
     public void test024ForbiddenWithDoubleTypeButIntValue(){
         System.out.println("TC024-Test read forbidden with double type but int value:");
@@ -375,8 +359,7 @@ public class MainFunctionTest extends TestCase {
         System.out.println();
     }
     /**
-     * Test case 25:
-     * @param args 
+     * Test case 25: 
      */
     @Test
     public void test025ForbiddenCorrectWithWhitespace(){
@@ -391,8 +374,7 @@ public class MainFunctionTest extends TestCase {
         System.out.println();
     }
     /**
-     * Test case 26:
-     * @param args 
+     * Test case 26: 
      */
     public void test026ForbiddenWithOneWord(){
         System.out.println("TC026-Test read forbidden with one word:");
@@ -406,8 +388,7 @@ public class MainFunctionTest extends TestCase {
         System.out.println();
     }
     /**
-     * Test case 28:
-     * @param args 
+     * Test case 28: 
      */
     @Test
     public void test028ReadCorrectMessage(){
@@ -423,8 +404,7 @@ public class MainFunctionTest extends TestCase {
         System.out.println();
     }
     /**
-     * Test case 29:
-     * @param args 
+     * Test case 29: 
      */
     @Test
     public void test029ReadLargerNumberOfMessage(){
@@ -440,8 +420,7 @@ public class MainFunctionTest extends TestCase {
         System.out.println();
     }
     /**
-     * Test case 30:
-     * @param args 
+     * Test case 30: 
      */
     @Test
     public void test030ReadSmallerNumberOfMessage(){
@@ -457,8 +436,7 @@ public class MainFunctionTest extends TestCase {
         System.out.println();
     }
     /**
-     * Test case 31:
-     * @param args 
+     * Test case 31: 
      */
     public void test031ReadWrongNumberOfMessage(){
         System.out.println("TC031-Test wrong number of message:");
@@ -473,8 +451,7 @@ public class MainFunctionTest extends TestCase {
         System.out.println();
     }
     /**
-     * Test case 32:
-     * @param args 
+     * Test case 32: 
      */
     @Test
     public void test032ReadWrongFormatNumberOfMessage(){
@@ -490,8 +467,7 @@ public class MainFunctionTest extends TestCase {
         System.out.println();
     }
     /**
-     * Test case 33:
-     * @param args 
+     * Test case 33: 
      */
     @Test
     public void test033ReadSmallerNumberOfWordInMessage(){
@@ -507,8 +483,7 @@ public class MainFunctionTest extends TestCase {
         System.out.println();
     }
     /**
-     * Test case 34:
-     * @param args 
+     * Test case 34: 
      */
     @Test
     public void test034ReadLargerNumberOfWordInMessage(){
@@ -524,8 +499,7 @@ public class MainFunctionTest extends TestCase {
         System.out.println();
     }
     /**
-     * Test case 35:
-     * @param args 
+     * Test case 35: 
      */
     @Test
     public void test035ReadEmptyMessage(){
@@ -541,8 +515,7 @@ public class MainFunctionTest extends TestCase {
         System.out.println();
     }
     /**
-     * Test case 36:
-     * @param args 
+     * Test case 36: 
      */
     @Test
     public void test036ReadWrongFormatNumberOfWordInMessage(){
@@ -558,8 +531,7 @@ public class MainFunctionTest extends TestCase {
         System.out.println();
     }
     /**
-     * Test case 37:
-     * @param args 
+     * Test case 37: 
      */
     @Test
     public void test037ReadWrongTimeFormat(){
@@ -575,14 +547,14 @@ public class MainFunctionTest extends TestCase {
         System.out.println();
     }
     /**
-     * Test case 38:
-     * @param args 
+     * Test case 38: 
+     * @throws java.text.ParseException
      */
     @Test
     public void test038CheckSendTime1_00AM() throws ParseException{
         System.out.println("TC038-Check send time at 1:00 AM :");
         MainFunction m = new MainFunction();
-        Date d = m.format.parse("1:00 AM");
+        Date d = MainFunction.format.parse("1:00 AM");
         boolean result = m.checkValidTime(d);
         boolean expectedResult = false;
         assertEquals("Should be read without error",expectedResult, result);
@@ -590,14 +562,14 @@ public class MainFunctionTest extends TestCase {
         System.out.println();
     }
     /**
-     * Test case 39:
-     * @param args 
+     * Test case 39: 
+     * @throws java.text.ParseException
      */
     @Test
     public void test039CheckSendTime00_59AM() throws ParseException{
         System.out.println("TC033-Check send time at 00:59 AM :");
         MainFunction m = new MainFunction();
-        Date d = m.format.parse("00:59 AM");
+        Date d = MainFunction.format.parse("00:59 AM");
         boolean result = m.checkValidTime(d);
         boolean expectedResult = true;
         assertEquals("Should be read without error",expectedResult, result);
@@ -605,14 +577,14 @@ public class MainFunctionTest extends TestCase {
         System.out.println();
     }
     /**
-     * Test case 40:
-     * @param args 
+     * Test case 40: 
+     * @throws java.text.ParseException
      */
     @Test
     public void test040CheckSendTime1_01AM() throws ParseException{
         System.out.println("TC040-Check send time at 1:01AM :");
         MainFunction m = new MainFunction();
-        Date d = m.format.parse("1:01 AM");
+        Date d = MainFunction.format.parse("1:01 AM");
         boolean result = m.checkValidTime(d);
         boolean expectedResult = false;
         assertEquals("Should be read without error",expectedResult, result);
@@ -620,14 +592,14 @@ public class MainFunctionTest extends TestCase {
         System.out.println();
     }
     /**
-     * Test case 41:
-     * @param args 
+     * Test case 41: 
+     * @throws java.text.ParseException 
      */
     @Test
     public void test041CheckSendTime6_59AM() throws ParseException{
         System.out.println("TC041-Check send time at 6:59AM :");
         MainFunction m = new MainFunction();
-        Date d = m.format.parse("6:59 AM");
+        Date d = MainFunction.format.parse("6:59 AM");
         boolean result = m.checkValidTime(d);
         boolean expectedResult = false;
         assertEquals("Should be read without error",expectedResult, result);
@@ -635,14 +607,14 @@ public class MainFunctionTest extends TestCase {
         System.out.println();
     }
     /**
-     * Test case 42:
-     * @param args 
+     * Test case 42: 
+     * @throws java.text.ParseException 
      */
     @Test
     public void test042CheckSendTime7_00AM() throws ParseException{
         System.out.println("TC042-Check send time at 7:00AM :");
         MainFunction m = new MainFunction();
-        Date d = m.format.parse("7:00 AM");
+        Date d = MainFunction.format.parse("7:00 AM");
         boolean result = m.checkValidTime(d);
         boolean expectedResult = true;
         assertEquals("Should be read without error",expectedResult, result);
@@ -650,26 +622,151 @@ public class MainFunctionTest extends TestCase {
         System.out.println();
     }
     /**
-     * Test case 43:
-     * @param args 
+     * Test case 43: 
+     * @throws java.text.ParseException 
      */
     @Test
     public void test043CheckSendTime6_58AM() throws ParseException{
         System.out.println("TC043-Check send time at 7:00AM :");
         MainFunction m = new MainFunction();
-        Date d = m.format.parse("6:58 AM");
+        Date d = MainFunction.format.parse("6:58 AM");
         boolean result = m.checkValidTime(d);
         boolean expectedResult = false;
         assertEquals("Should be read without error",expectedResult, result);
-        System.out.println("\tTC-042:PASS");
+        System.out.println("\tTC-043:PASS");
         System.out.println();
     }
-    @Test
-    public void defaultd(){
+    /**
+     * Test case 44: 
+     */
+    public void test044CheckCorrectMessage(){
+        System.out.println("TC044-Check correct message");
         MainFunction m = new MainFunction();
-        boolean result = m.validTimeFormat("06:59 AM");
-        boolean ex = true;
-        assertEquals(ex, result);
+        assertEquals("FAILED TO READ FILE", m.readFile("src/testfile/Lib.txt"),true);
+        assertEquals("Read first dictionary failed",m.analyzeDictionary(),true);
+        assertEquals("Failed to read forbidden", m.analyzeForbidden(),true);
+        boolean result = m.checkValidMessage("I Jason love you");
+        boolean expectedResult = true;
+        assertEquals("Should return true",expectedResult, result);
+        System.out.println("\tTC-044:PASS");
+    }
+    /**
+     * Test case 45: 
+     */
+    public void test045CheckMessageWith2Mispells(){
+        System.out.println("TC045-Check message with 2 misspell:");
+        MainFunction m = new MainFunction();
+        assertEquals("FAILED TO READ FILE", m.readFile("src/testfile/Lib.txt"),true);
+        assertEquals("Read first dictionary failed",m.analyzeDictionary(),true);
+        assertEquals("Failed to read forbidden", m.analyzeForbidden(),true);
+        boolean result = m.checkValidMessage("i joson lve you");
+        boolean expectedResult = true;
+        assertEquals("Should return true",expectedResult, result);
+        System.out.println("\tTC-045:PASS");
+    }
+    /**
+     * Test case 46: 
+     */
+    public void test046CheckMessageWith3Misspells(){
+        System.out.println("TC046-Check message with 3 misspell:");
+        MainFunction m = new MainFunction();
+        assertEquals("FAILED TO READ FILE", m.readFile("src/testfile/Lib.txt"),true);
+        assertEquals("Read first dictionary failed",m.analyzeDictionary(),true);
+        assertEquals("Failed to read forbidden", m.analyzeForbidden(),true);
+        boolean result = m.checkValidMessage("i joson lve yu");
+        boolean expectedResult = false;
+        assertEquals("Should return false",expectedResult, result);
+        System.out.println("\tTC-046:PASS");
+    }
+    /**
+     * Test case 47 
+     */
+    @Test
+    public void test047checkMessageWithCaseInsensitive(){
+        System.out.println("TC047-Check message with case insensitve:");
+        MainFunction m = new MainFunction();
+        assertEquals("FAILED TO READ FILE", m.readFile("src/testfile/Lib.txt"),true);
+        assertEquals("Read first dictionary failed",m.analyzeDictionary(),true);
+        assertEquals("Failed to read forbidden", m.analyzeForbidden(),true);
+        boolean result = m.checkValidMessage("I Jason LoVe YoU");
+        boolean expectedResult = true;
+        assertEquals("Should return false",expectedResult, result);
+        System.out.println("\tTC-047:PASS");
+    }
+    /**
+     * Test case 48: 
+     */
+    @Test
+    public void test048checkMessageContainILoveYou(){
+        System.out.println("TC048-Check message contain i love you:");
+        MainFunction m = new MainFunction();
+        assertEquals("FAILED TO READ FILE", m.readFile("src/testfile/Lib.txt"),true);
+        assertEquals("Read first dictionary failed",m.analyzeDictionary(),true);
+        assertEquals("Failed to read forbidden", m.analyzeForbidden(),true);
+        boolean result = m.checkValidMessage("i love you jason");
+        boolean expectedResult = false;
+        assertEquals("Should return false",expectedResult, result);
+        System.out.println("\tTC-048:PASS");
+    }
+    /**
+     * Test case 49
+     */
+    @Test
+    public void test049checkMessageContainWhitespace(){
+        System.out.println("TC049-Check message contain whitespace:");
+        MainFunction m = new MainFunction();
+        assertEquals("FAILED TO READ FILE", m.readFile("src/testfile/Lib.txt"),true);
+        assertEquals("Read first dictionary failed",m.analyzeDictionary(),true);
+        assertEquals("Failed to read forbidden", m.analyzeForbidden(),true);
+        boolean result = m.checkValidMessage("i               jason      love    you");
+        boolean expectedResult = true;
+        assertEquals("Should return true",expectedResult, result);
+        System.out.println("\tTC-049:PASS");
+    }
+    /**
+     * Test case 50:
+     */
+    @Test
+    public void test050checkMessageContainForbiddenWord(){
+        System.out.println("TC050-Check message contain forbidden word:");
+        MainFunction m = new MainFunction();
+        assertEquals("FAILED TO READ FILE", m.readFile("src/testfile/Lib.txt"),true);
+        assertEquals("Read first dictionary failed",m.analyzeDictionary(),true);
+        assertEquals("Failed to read forbidden", m.analyzeForbidden(),true);
+        boolean result = m.checkValidMessage("jason you ahole");
+        boolean expectedResult = false;
+        assertEquals("Should return false",expectedResult, result);
+        System.out.println("\tTC-050:PASS");
+    }
+    /**
+     * Test case 51:
+     */
+    @Test
+    public void test051checkMessageWithOnlyForbiddenWord(){
+        System.out.println("TC051-Check message contain only forbidden word:");
+        MainFunction m = new MainFunction();
+        assertEquals("FAILED TO READ FILE", m.readFile("src/testfile/Lib.txt"),true);
+        assertEquals("Read first dictionary failed",m.analyzeDictionary(),true);
+        assertEquals("Failed to read forbidden", m.analyzeForbidden(),true);
+        boolean result = m.checkValidMessage("ahole jerk");
+        boolean expectedResult = false;
+        assertEquals("Should return false",expectedResult, result);
+        System.out.println("\tTC-051:PASS");
+    }
+    /**
+     * Test case 52:
+     */
+    @Test
+    public void test052checkMessageBlank(){
+        System.out.println("TC052-Check message contain only forbidden word:");
+        MainFunction m = new MainFunction();
+        assertEquals("FAILED TO READ FILE", m.readFile("src/testfile/Lib.txt"),true);
+        assertEquals("Read first dictionary failed",m.analyzeDictionary(),true);
+        assertEquals("Failed to read forbidden", m.analyzeForbidden(),true);
+        boolean result = m.checkValidMessage("");
+        boolean expectedResult = true;
+        assertEquals("Should return true",expectedResult, result);
+        System.out.println("\tTC-052:PASS");
     }
     public static void main(String []args) {  
             junit.textui.TestRunner.run(new TestSuite(MainFunctionTest.class));  

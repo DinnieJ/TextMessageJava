@@ -256,12 +256,12 @@ public class MainFunction {
      * @param m
      * @return 
      */
-    public boolean checkValidMessage(Message m){
+    public boolean checkValidMessage(String m){
         boolean check = true;
-        if(m.getMessage().toLowerCase().contains("I love you".toLowerCase())){
+        if(m.toLowerCase().contains("I love you".toLowerCase())){
             check = false;
         }
-        String[] messArr = m.getMessage().split("\\s+");
+        String[] messArr = m.split("\\s+");
         int misspellWordCount = 0;
         for(String s: messArr){
             if(isForbiddenWord(s)){
@@ -292,7 +292,7 @@ public class MainFunction {
                 System.out.println();
             }
             else{
-                if(checkValidMessage(m)){
+                if(checkValidMessage(m.getMessage())){
                     System.out.println("Message #"+ (current++)+": "+m.getMessage());
                     System.out.println();
                 }else{
