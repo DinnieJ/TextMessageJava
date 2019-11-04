@@ -19,7 +19,7 @@ public class MainFunctionTest extends TestCase {
     public MainFunctionTest(String name){
         super(name);
     }
-    
+    ///////////////////////////////////////////////////////////////////////////////////////////////////////////////readFile() test/////////////////////////////////////
     /**
      * Test case 1: Test for file existed to read
      * Success: Read the file succesful
@@ -85,7 +85,7 @@ public class MainFunctionTest extends TestCase {
         System.out.println("\tTC-004: PASS");
         System.out.println();
     }
-    
+    ///////////////////////////////////////////////////////////////////////////////////////////////////////////////analyzeDictionary() test/////////////////////////////////////
     /**
      * Test case 5:
      */
@@ -239,6 +239,7 @@ public class MainFunctionTest extends TestCase {
         System.out.println("\tTC-016:PASS");
         System.out.println(); 
     }
+    ///////////////////////////////////////////////////////////////////////////////////////////////////////////////analyzeForbidden() test/////////////////////////////////////
     /**
      * Test case 17: 
      */
@@ -387,6 +388,7 @@ public class MainFunctionTest extends TestCase {
         System.out.println("\tTC-026:PASS");
         System.out.println();
     }
+    ///////////////////////////////////////////////////////////////////////////////////////////////////////////////getAllMessage() test/////////////////////////////////////
     /**
      * Test case 28: 
      */
@@ -545,6 +547,7 @@ public class MainFunctionTest extends TestCase {
         System.out.println("\tTC-037:PASS");
         System.out.println();
     }
+    ///////////////////////////////////////////////////////////////////////////////////////////////////////////////checkValidTime() test/////////////////////////////////////
     /**
      * Test case 38: 
      * @throws java.text.ParseException
@@ -635,6 +638,7 @@ public class MainFunctionTest extends TestCase {
         System.out.println("\tTC-043:PASS");
         System.out.println();
     }
+    ///////////////////////////////////////////////////////////////////////////////////////////////////////////////checkValidMessage() test/////////////////////////////////////
     /**
      * Test case 44: 
      */
@@ -767,6 +771,7 @@ public class MainFunctionTest extends TestCase {
         assertEquals("Should return true",expectedResult, result);
         System.out.println("\tTC-052:PASS");
     }
+    ///////////////////////////////////////////////////////////////////////////////////////////////////////////////isCorrectWord() test/////////////////////////////////////
     /**
      * Test case 53:
      */
@@ -795,6 +800,7 @@ public class MainFunctionTest extends TestCase {
         assertEquals("Should return true",expectedResult, result);
         System.out.println("\tTC-054:PASS");
     }
+    ///////////////////////////////////////////////////////////////////////////////////////////////////////////////isForbiddenWord() test/////////////////////////////////////
     /**
      * Test case 55
      */
@@ -852,6 +858,7 @@ public class MainFunctionTest extends TestCase {
         assertEquals("Should return false",expectedResult, result);
         System.out.println("\tTC-058:PASS");
     }
+    ///////////////////////////////////////////////////////////////////////////////////////////////////////////////validTimeFormat() test/////////////////////////////////////
     /**
      * Test case 59:
      */
@@ -984,6 +991,7 @@ public class MainFunctionTest extends TestCase {
         assertEquals("Should return true", result,expectedResult);
         System.out.println("\tTC-069:PASS");
     }
+    ///////////////////////////////////////////////////////////////////////////////////////////////////////////////checkWordSize() test/////////////////////////////////////
     /**
      * Test case 70:
      */
@@ -1044,6 +1052,7 @@ public class MainFunctionTest extends TestCase {
         assertEquals("Should return true", result,expectedResult);
         System.out.println("\tTC-074:PASS");
     }
+    ///////////////////////////////////////////////////////////////////////////////////////////////////////////////checkMaximumAllowedWord() test/////////////////////////////////////
     /**
      * Test case 75:
      */
@@ -1104,6 +1113,7 @@ public class MainFunctionTest extends TestCase {
         assertEquals("Should return true", result,expectedResult);
         System.out.println("\tTC-079:PASS");
     }
+    ///////////////////////////////////////////////////////////////////////////////////////////////////////////////checkMaximumForbiddenWord() test/////////////////////////////////////
     /**
      * Test case 80:
      */
@@ -1164,6 +1174,7 @@ public class MainFunctionTest extends TestCase {
         assertEquals("Should return true", result,expectedResult);
         System.out.println("\tTC-084:PASS");
     }
+    ///////////////////////////////////////////////////////////////////////////////////////////////////////////////checkMaximumWordsInMessage() test/////////////////////////////////////
     /**
      * Test case 85:
      */
@@ -1224,6 +1235,7 @@ public class MainFunctionTest extends TestCase {
         assertEquals("Should return true", result,expectedResult);
         System.out.println("\tTC-089:PASS");
     }
+    ///////////////////////////////////////////////////////////////////////////////////////////////////////////////isWhiteSpace() test/////////////////////////////////////
     /**
      * Test case 90:
      */
