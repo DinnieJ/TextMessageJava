@@ -457,7 +457,6 @@ public class MainFunctionTest extends TestCase {
     public void test032ReadWrongFormatNumberOfMessage(){
         System.out.println("TC032-Test wrong format number of message:");
         MainFunction m = new MainFunction();
-        m.setSrc("src/testfile/UTC032.txt");
         assertEquals("FAILED TO READ FILE", m.readFile("src/testfile/UTC032.txt"),true);
         assertEquals("Read first dictionary failed",m.analyzeDictionary(),true);
         boolean result = m.analyzeForbidden();
@@ -682,7 +681,7 @@ public class MainFunctionTest extends TestCase {
      * Test case 47 
      */
     @Test
-    public void test047checkMessageWithCaseInsensitive(){
+    public void test047CheckMessageWithCaseInsensitive(){
         System.out.println("TC047-Check message with case insensitve:");
         MainFunction m = new MainFunction();
         assertEquals("FAILED TO READ FILE", m.readFile("src/testfile/Lib.txt"),true);
@@ -697,7 +696,7 @@ public class MainFunctionTest extends TestCase {
      * Test case 48: 
      */
     @Test
-    public void test048checkMessageContainILoveYou(){
+    public void test048CheckMessageContainILoveYou(){
         System.out.println("TC048-Check message contain i love you:");
         MainFunction m = new MainFunction();
         assertEquals("FAILED TO READ FILE", m.readFile("src/testfile/Lib.txt"),true);
@@ -712,7 +711,7 @@ public class MainFunctionTest extends TestCase {
      * Test case 49
      */
     @Test
-    public void test049checkMessageContainWhitespace(){
+    public void test049CheckMessageContainWhitespace(){
         System.out.println("TC049-Check message contain whitespace:");
         MainFunction m = new MainFunction();
         assertEquals("FAILED TO READ FILE", m.readFile("src/testfile/Lib.txt"),true);
@@ -727,7 +726,7 @@ public class MainFunctionTest extends TestCase {
      * Test case 50:
      */
     @Test
-    public void test050checkMessageContainForbiddenWord(){
+    public void test050CheckMessageContainForbiddenWord(){
         System.out.println("TC050-Check message contain forbidden word:");
         MainFunction m = new MainFunction();
         assertEquals("FAILED TO READ FILE", m.readFile("src/testfile/Lib.txt"),true);
@@ -742,7 +741,7 @@ public class MainFunctionTest extends TestCase {
      * Test case 51:
      */
     @Test
-    public void test051checkMessageWithOnlyForbiddenWord(){
+    public void test051CheckMessageWithOnlyForbiddenWord(){
         System.out.println("TC051-Check message contain only forbidden word:");
         MainFunction m = new MainFunction();
         assertEquals("FAILED TO READ FILE", m.readFile("src/testfile/Lib.txt"),true);
@@ -757,7 +756,7 @@ public class MainFunctionTest extends TestCase {
      * Test case 52:
      */
     @Test
-    public void test052checkMessageBlank(){
+    public void test052CheckMessageBlank(){
         System.out.println("TC052-Check message contain only forbidden word:");
         MainFunction m = new MainFunction();
         assertEquals("FAILED TO READ FILE", m.readFile("src/testfile/Lib.txt"),true);
@@ -767,6 +766,223 @@ public class MainFunctionTest extends TestCase {
         boolean expectedResult = true;
         assertEquals("Should return true",expectedResult, result);
         System.out.println("\tTC-052:PASS");
+    }
+    /**
+     * Test case 53:
+     */
+    @Test
+    public void test053CheckExistedWordInDictionary(){
+        System.out.println("TC053-Check correct word in dictionary:");
+        MainFunction m = new MainFunction();
+        assertEquals("FAILED TO READ FILE", m.readFile("src/testfile/Lib.txt"),true);
+        assertEquals("Read first dictionary failed",m.analyzeDictionary(),true);
+        boolean result = m.isCorrectWord("love");
+        boolean expectedResult = true;
+        assertEquals("Should return true",expectedResult, result);
+        System.out.println("\tTC-053:PASS");
+    }
+    /**
+     * Test case 54
+     */
+    @Test
+    public void test054CheckExistedWordCaseInsensitive(){
+        System.out.println("TC054-Check correct word in dictionary case insensitive:");
+        MainFunction m = new MainFunction();
+        assertEquals("FAILED TO READ FILE", m.readFile("src/testfile/Lib.txt"),true);
+        assertEquals("Read first dictionary failed",m.analyzeDictionary(),true);
+        boolean result = m.isCorrectWord("LoVe");
+        boolean expectedResult = true;
+        assertEquals("Should return true",expectedResult, result);
+        System.out.println("\tTC-054:PASS");
+    }
+    /**
+     * Test case 55
+     */
+    @Test
+    public void test055CheckNotExistedWordInDictionary(){
+        System.out.println("TC055-Check correct word in dictionary case insensitive:");
+        MainFunction m = new MainFunction();
+        assertEquals("FAILED TO READ FILE", m.readFile("src/testfile/Lib.txt"),true);
+        assertEquals("Read first dictionary failed",m.analyzeDictionary(),true);
+        boolean result = m.isCorrectWord("lve");
+        boolean expectedResult = false;
+        assertEquals("Should return false",expectedResult, result);
+        System.out.println("\tTC-055:PASS");
+    }
+    /**
+     * Test case 56
+     */
+    @Test
+    public void test056CheckExistedForbiddenWord(){
+        System.out.println("TC056-Check word existed in forbidden:");
+        MainFunction m = new MainFunction();
+        assertEquals("FAILED TO READ FILE", m.readFile("src/testfile/Lib.txt"),true);
+        assertEquals("Read first dictionary failed",m.analyzeDictionary(),true);
+        assertEquals("Failed to read forbidden", m.analyzeForbidden(),true);
+        boolean result = m.isForbiddenWord("jerk");
+        boolean expectedResult = true;
+        assertEquals("Should return true",expectedResult, result);
+        System.out.println("\tTC-056:PASS");
+    }
+    /**
+     * Test case 57
+     */
+    public void test057CheckExistedForbiddenWordCaseInsensitive(){
+        System.out.println("TC057-Check word existed in forbidden case insensitive:");
+        MainFunction m = new MainFunction();
+        assertEquals("FAILED TO READ FILE", m.readFile("src/testfile/Lib.txt"),true);
+        assertEquals("Read first dictionary failed",m.analyzeDictionary(),true);
+        assertEquals("Failed to read forbidden", m.analyzeForbidden(),true);
+        boolean result = m.isForbiddenWord("jErK");
+        boolean expectedResult = true;
+        assertEquals("Should return true",expectedResult, result);
+        System.out.println("\tTC-057:PASS");
+    }
+    /**
+     * Test case 58
+     */
+    public void test058CheckNotExistedForbiddenWord(){
+        System.out.println("TC058-Check word existed in forbidden case insensitive:");
+        MainFunction m = new MainFunction();
+        assertEquals("FAILED TO READ FILE", m.readFile("src/testfile/Lib.txt"),true);
+        assertEquals("Read first dictionary failed",m.analyzeDictionary(),true);
+        assertEquals("Failed to read forbidden", m.analyzeForbidden(),true);
+        boolean result = m.isForbiddenWord("hole");
+        boolean expectedResult = false;
+        assertEquals("Should return false",expectedResult, result);
+        System.out.println("\tTC-058:PASS");
+    }
+    /**
+     * Test case 59:
+     */
+    @Test
+    public void test059CheckCorrectAMFormat(){
+        System.out.println("TC059-Check correct a.m time format:");
+        MainFunction m = new MainFunction();
+        boolean result = m.validTimeFormat("7:00 AM");
+        boolean expectedResult = true;
+        assertEquals("Should return true", result,expectedResult);
+        System.out.println("\tTC-059:PASS");
+    }
+    /**
+     * Test case 60:
+     */
+    @Test
+    public void test060CheckCorrectPMFormat(){
+        System.out.println("TC060-Check correct p.m time format:");
+        MainFunction m = new MainFunction();
+        boolean result = m.validTimeFormat("7:00 PM");
+        boolean expectedResult = true;
+        assertEquals("Should return true", result,expectedResult);
+        System.out.println("\tTC-059:PASS");
+    }
+    /**
+     * Test case 61:
+     */
+    @Test
+    public void test061CheckNot12HFormat(){
+        System.out.println("TC061-Check correct p.m time format:");
+        MainFunction m = new MainFunction();
+        boolean result = m.validTimeFormat("13:40");
+        boolean expectedResult = false;
+        assertEquals("Should return false", result,expectedResult);
+        System.out.println("\tTC-061:PASS");
+    }
+    /**
+     * Test case 62:
+     */
+    @Test
+    public void test062CheckWrongHourValueFormat(){
+        System.out.println("TC062-Check wrong hour value format:");
+        MainFunction m = new MainFunction();
+        boolean result = m.validTimeFormat("15:20 AM");
+        boolean expectedResult = false;
+        assertEquals("Should return false", result,expectedResult);
+        System.out.println("\tTC-062:PASS");
+    }
+    /**
+     * Test case 63
+     */
+    @Test
+    public void test063CheckWrongMinuteValueFormat(){
+        System.out.println("TC063-Check wrong hour value format:");
+        MainFunction m = new MainFunction();
+        boolean result = m.validTimeFormat("11:72 AM");
+        boolean expectedResult = false;
+        assertEquals("Should return false", result,expectedResult);
+        System.out.println("\tTC-063:PASS");
+    }
+    /**
+     * Test case 64
+     */
+    @Test
+    public void test064CheckWrongBothHourAndMinuteValueFormat(){
+        System.out.println("TC064-Check wrong both hour and minute value format:");
+        MainFunction m = new MainFunction();
+        boolean result = m.validTimeFormat("33:214 AM");
+        boolean expectedResult = false;
+        assertEquals("Should return false", result,expectedResult);
+        System.out.println("\tTC-064:PASS");
+    }
+    /**
+     * Test case 65:
+     */
+    @Test
+    public void test065CheckWrongHourDataType(){
+        System.out.println("TC065-Check wrong hour data type:");
+        MainFunction m = new MainFunction();
+        boolean result = m.validTimeFormat("aa:20 PM");
+        boolean expectedResult = false;
+        assertEquals("Should return false", result,expectedResult);
+        System.out.println("\tTC-065:PASS");
+    }
+    /**
+     * Test case 66:
+     */
+    @Test
+    public void test066CheckWrongMinuteDataType(){
+        System.out.println("TC066-Check wrong minute data type:");
+        MainFunction m = new MainFunction();
+        boolean result = m.validTimeFormat("10:bb AM");
+        boolean expectedResult = false;
+        assertEquals("Should return false", result,expectedResult);
+        System.out.println("\tTC-066:PASS");
+    }
+    /**
+     * Test case 67:
+     */
+    @Test
+    public void test067CheckWrongBothHourAndMinuteDataType(){
+        System.out.println("TC067-Check wrong both hour and minute data type:");
+        MainFunction m = new MainFunction();
+        boolean result = m.validTimeFormat("cc:dd AM");
+        boolean expectedResult = false;
+        assertEquals("Should return false", result,expectedResult);
+        System.out.println("\tTC-067:PASS");
+    }
+    /**
+     * Test case 68:
+     */
+    @Test
+    public void test068CheckWrongAmPmFormat(){
+        System.out.println("TC068-Check wrong a.m,p.m format:");
+        MainFunction m = new MainFunction();
+        boolean result = m.validTimeFormat("7:00 CM");
+        boolean expectedResult = false;
+        assertEquals("Should return false", result,expectedResult);
+        System.out.println("\tTC-068:PASS");
+    }
+    /**
+     * Test case 69:
+     */
+    @Test
+    public void test069CheckCorrectAmPmFormatCaseInsensitive(){
+        System.out.println("TC069-Check wrong a.m,p.m format:");
+        MainFunction m = new MainFunction();
+        boolean result = m.validTimeFormat("7:00 am");
+        boolean expectedResult = true;
+        assertEquals("Should return true", result,expectedResult);
+        System.out.println("\tTC-069:PASS");
     }
     public static void main(String []args) {  
             junit.textui.TestRunner.run(new TestSuite(MainFunctionTest.class));  

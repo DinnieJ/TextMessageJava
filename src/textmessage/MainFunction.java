@@ -33,7 +33,6 @@ public class MainFunction {
     private final List<String> content;
     private int currentPos;
     public static final DateFormat format = new SimpleDateFormat("hh:mm a");
-    public String src;
     
     public MainFunction() {
         allowedWords = new HashSet<>();
@@ -41,9 +40,6 @@ public class MainFunction {
         content = new ArrayList<>();
         currentPos = 0;
         messages = new ArrayList<>();
-    }
-    public void setSrc(String src){
-        this.src = src;
     }
     /**
      * Read the file and add each line into the List<String> for later usage
@@ -181,7 +177,7 @@ public class MainFunction {
                     sendTime = format.parse(content.get(i));
                 }
                 else{
-                    System.out.println("Invalid time format \""+content.get(i)+"\" "+src);
+                    System.out.println("Invalid time format \""+content.get(i)+"\"");
                     
                     return false;
                 }

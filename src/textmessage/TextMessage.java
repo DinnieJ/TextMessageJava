@@ -27,7 +27,6 @@ public class TextMessage {
                 System.exit(-1);
             }
         }else{
-            System.out.println("day nay");
             System.exit(-1);
         }
         
