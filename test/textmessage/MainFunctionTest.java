@@ -984,6 +984,66 @@ public class MainFunctionTest extends TestCase {
         assertEquals("Should return true", result,expectedResult);
         System.out.println("\tTC-069:PASS");
     }
+    /**
+     * Test case 70:
+     */
+    @Test
+    public void test070CheckCorrectWordSize(){
+        System.out.println("TC070-Check correct word size:");
+        MainFunction m = new MainFunction();
+        boolean result = m.checkWordSize("aaaaaaaaaaaaaaaaaaaaaaaaaaaaa");
+        boolean expectedResult = true;
+        assertEquals("Should return true", result,expectedResult);
+        System.out.println("\tTC-070:PASS");
+    }
+    /**
+     * Test case 71:
+     */
+    @Test
+    public void test071CheckWordLargerThan29Letter(){
+        System.out.println("TC071-Check correct word size:");
+        MainFunction m = new MainFunction();
+        boolean result = m.checkWordSize("aaaaaaaaaaaaaaaaaaaaaaaaaaaaaa");
+        boolean expectedResult = false;
+        assertEquals("Should return false", result,expectedResult);
+        System.out.println("\tTC-071:PASS");
+    }
+    /**
+     * Test case 72:
+     */
+    @Test
+    public void test072CheckWordBetween0To29Letter(){
+        System.out.println("TC072-Check word between 0-29 letters:");
+        MainFunction m = new MainFunction();
+        boolean result = m.checkWordSize("Jason");
+        boolean expectedResult = true;
+        assertEquals("Should return true", result,expectedResult);
+        System.out.println("\tTC-072:PASS");
+    }
+    /**
+     * Test case 073
+     */
+    @Test
+    public void test073CheckBlankWord(){
+        System.out.println("TC073-Check blank word:");
+        MainFunction m = new MainFunction();
+        boolean result = m.checkWordSize("");
+        boolean expectedResult = true;
+        assertEquals("Should return true", result,expectedResult);
+        System.out.println("\tTC-073:PASS");
+    }
+    /**
+     * Test case 074:
+     */
+    @Test
+    public void test074CheckWordWith1Letter(){
+        System.out.println("TC074-Check word with 1 letter:");
+        MainFunction m = new MainFunction();
+        boolean result = m.checkWordSize("a");
+        boolean expectedResult = true;
+        assertEquals("Should return true", result,expectedResult);
+        System.out.println("\tTC-074:PASS");
+    }
     public static void main(String []args) {  
             junit.textui.TestRunner.run(new TestSuite(MainFunctionTest.class));  
     } 

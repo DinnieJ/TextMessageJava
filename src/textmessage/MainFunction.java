@@ -338,7 +338,7 @@ public class MainFunction {
      * @return 
      */
     public boolean validTimeFormat(String timeString){
-        return timeString.matches("(1[012]|[1-9]):[0-5][0-9](\\s)?(?i)(am|pm)");
+        return timeString.matches("(1[012]|[1-9]|0[1-9]):[0-5][0-9](\\s)?(?i)(am|pm)");
     }
     
     /**
