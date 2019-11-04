@@ -1021,7 +1021,7 @@ public class MainFunctionTest extends TestCase {
         System.out.println("\tTC-072:PASS");
     }
     /**
-     * Test case 073
+     * Test case 73
      */
     @Test
     public void test073CheckBlankWord(){
@@ -1033,7 +1033,7 @@ public class MainFunctionTest extends TestCase {
         System.out.println("\tTC-073:PASS");
     }
     /**
-     * Test case 074:
+     * Test case 74:
      */
     @Test
     public void test074CheckWordWith1Letter(){
@@ -1043,6 +1043,222 @@ public class MainFunctionTest extends TestCase {
         boolean expectedResult = true;
         assertEquals("Should return true", result,expectedResult);
         System.out.println("\tTC-074:PASS");
+    }
+    /**
+     * Test case 75:
+     */
+    @Test
+    public void test075Check29999Word(){
+        System.out.println("TC075-Check 29999 word:");
+        MainFunction m = new MainFunction();
+        boolean result = m.checkMaximumAllowedWord(29999);
+        boolean expectedResult = true;
+        assertEquals("Should return true", result,expectedResult);
+        System.out.println("\tTC-075:PASS");
+    }
+    /**
+     * Test case 76:
+     */
+    @Test
+    public void test076Check30000Word(){
+        System.out.println("TC076-Check 30000 word:");
+        MainFunction m = new MainFunction();
+        boolean result = m.checkMaximumAllowedWord(30000);
+        boolean expectedResult = false;
+        assertEquals("Should return false", result,expectedResult);
+        System.out.println("\tTC-076:PASS");
+    }
+    /**
+     * Test case 77:
+     */
+    @Test
+    public void test077Check1Word(){
+        System.out.println("TC077-Check 1 word:");
+        MainFunction m = new MainFunction();
+        boolean result = m.checkMaximumAllowedWord(1);
+        boolean expectedResult = true;
+        assertEquals("Should return true", result,expectedResult);
+        System.out.println("\tTC-077:PASS");
+    }
+    /**
+     * Test case 78:
+     */
+    @Test
+    public void test078CheckNoWord(){
+        System.out.println("TC078-Check 0 word:");
+        MainFunction m = new MainFunction();
+        boolean result = m.checkMaximumAllowedWord(0);
+        boolean expectedResult = false;
+        assertEquals("Should return false", result,expectedResult);
+        System.out.println("\tTC-078:PASS");
+    }
+    /**
+     * Test case 79:
+     */
+    @Test
+    public void test079Check10000Word(){
+        System.out.println("TC079-Check 10000 word:");
+        MainFunction m = new MainFunction();
+        boolean result = m.checkMaximumAllowedWord(10000);
+        boolean expectedResult = true;
+        assertEquals("Should return true", result,expectedResult);
+        System.out.println("\tTC-079:PASS");
+    }
+    /**
+     * Test case 80:
+     */
+    @Test
+    public void test080Check99ForbiddenWords(){
+        System.out.println("TC080-Check 99 forbidden word:");
+        MainFunction m = new MainFunction();
+        boolean result = m.checkMaximumForbiddenWord(99);
+        boolean expectedResult = true;
+        assertEquals("Should return true", result,expectedResult);
+        System.out.println("\tTC-080:PASS");
+    }
+    /**
+     * Test case 81:
+     */
+    @Test
+    public void test081Check100ForbiddenWords(){
+        System.out.println("TC081-Check 100 forbidden word:");
+        MainFunction m = new MainFunction();
+        boolean result = m.checkMaximumForbiddenWord(100);
+        boolean expectedResult = false;
+        assertEquals("Should return false", result,expectedResult);
+        System.out.println("\tTC-081:PASS");
+    }
+    /**
+     * Test case 82:
+     */
+    @Test
+    public void test082Check1ForbiddenWords(){
+        System.out.println("TC082-Check 100 forbidden word:");
+        MainFunction m = new MainFunction();
+        boolean result = m.checkMaximumForbiddenWord(1);
+        boolean expectedResult = true;
+        assertEquals("Should return true", result,expectedResult);
+        System.out.println("\tTC-082:PASS");
+    }
+    /**
+     * Test case 83:
+     */
+    @Test
+    public void test083CheckZeroForbiddenWords(){
+        System.out.println("TC083-Check 0 forbidden word:");
+        MainFunction m = new MainFunction();
+        boolean result = m.checkMaximumForbiddenWord(0);
+        boolean expectedResult = false;
+        assertEquals("Should return false", result,expectedResult);
+        System.out.println("\tTC-083:PASS");
+    }
+    /**
+     * Test case 84:
+     */
+    @Test
+    public void test084Check50ForbiddenWords(){
+        System.out.println("TC084-Check 50 forbidden word:");
+        MainFunction m = new MainFunction();
+        boolean result = m.checkMaximumForbiddenWord(50);
+        boolean expectedResult = true;
+        assertEquals("Should return true", result,expectedResult);
+        System.out.println("\tTC-084:PASS");
+    }
+    /**
+     * Test case 85:
+     */
+    @Test
+    public void test085CheckCorrectMessageLength(){
+        System.out.println("TC085-Check correct message length:");
+        MainFunction m = new MainFunction();
+        boolean result = m.checkMaximumWordsInMessage("hold it lul");
+        boolean expectedResult = true;
+        assertEquals("Should return true", result,expectedResult);
+        System.out.println("\tTC-085:PASS");
+    }
+    /**
+     * Test case 86:
+     */
+    @Test
+    public void test086Check50WordsMessage(){
+        System.out.println("TC086-Check correct message length:");
+        MainFunction m = new MainFunction();
+        boolean result = m.checkMaximumWordsInMessage("a a a a a a a a a a a a a a a a a a a a a a a a a a a a a a a a a a a a a a a a a a a a a a a a a a ");
+        boolean expectedResult = false;
+        assertEquals("Should return false", result,expectedResult);
+        System.out.println("\tTC-086:PASS");
+    }
+    /**
+     * Test case 87:
+     */
+    @Test
+    public void test087Check49WordsMessage(){
+        System.out.println("TC087-Check correct message length:");
+        MainFunction m = new MainFunction();
+        boolean result = m.checkMaximumWordsInMessage("a a a a a a a a a a a a a a a a a a a a a a a a a a a a a a a a a a a a a a a a a a a a a a a a a");
+        boolean expectedResult = true;
+        assertEquals("Should return true", result,expectedResult);
+        System.out.println("\tTC-087:PASS");
+    }
+    /**
+     * Test case 88:
+     */
+    @Test
+    public void test088Check1WordsMessage(){
+        System.out.println("TC088-Check correct message length:");
+        MainFunction m = new MainFunction();
+        boolean result = m.checkMaximumWordsInMessage("a");
+        boolean expectedResult = true;
+        assertEquals("Should return true", result,expectedResult);
+        System.out.println("\tTC-088:PASS");
+    }
+    /**
+     * Test case 89:
+     */
+    @Test
+    public void test089CheckBlankMessage(){
+        System.out.println("TC089-Check correct message length:");
+        MainFunction m = new MainFunction();
+        boolean result = m.checkMaximumWordsInMessage("");
+        boolean expectedResult = true;
+        assertEquals("Should return true", result,expectedResult);
+        System.out.println("\tTC-089:PASS");
+    }
+    /**
+     * Test case 90:
+     */
+    @Test
+    public void test090CheckEmptyWhitespace(){
+        System.out.println("TC090-Check whitespace:");
+        MainFunction m = new MainFunction();
+        boolean result = m.isWhiteSpace("");
+        boolean expectedResult = true;
+        assertEquals("Should return true", result,expectedResult);
+        System.out.println("\tTC-090:PASS");
+    }
+    /**
+     * Test case 91:
+     */
+    @Test
+    public void test091heckWhitespace(){
+        System.out.println("TC091-Check whitespace:");
+        MainFunction m = new MainFunction();
+        boolean result = m.isWhiteSpace("          ");
+        boolean expectedResult = true;
+        assertEquals("Should return true", result,expectedResult);
+        System.out.println("\tTC-091:PASS");
+    }
+    /**
+     * Test case 92:
+     */
+    @Test
+    public void test092CheckWhitespace(){
+        System.out.println("TC092-Check whitespace:");
+        MainFunction m = new MainFunction();
+        boolean result = m.isWhiteSpace("test");
+        boolean expectedResult = false;
+        assertEquals("Should return false", result,expectedResult);
+        System.out.println("\tTC-092:PASS");
     }
     public static void main(String []args) {  
             junit.textui.TestRunner.run(new TestSuite(MainFunctionTest.class));  
