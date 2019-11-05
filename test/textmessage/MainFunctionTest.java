@@ -1272,6 +1272,18 @@ public class MainFunctionTest extends TestCase {
         assertEquals("Should return false", result,expectedResult);
         System.out.println("\tTC-092:PASS");
     }
+    /**
+     * Test case 93:
+     */
+    @Test
+    public void test093CheckLineBreak(){
+        System.out.println("TC093-Check whitespace:");
+        MainFunction m = new MainFunction();
+        boolean result = m.isWhiteSpace("\n");
+        boolean expectedResult = true;
+        assertEquals("Should return true", result,expectedResult);
+        System.out.println("\tTC-093:PASS");
+    }
     public static void main(String []args) {  
             junit.textui.TestRunner.run(new TestSuite(MainFunctionTest.class));  
     } 
